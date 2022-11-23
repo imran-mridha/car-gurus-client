@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
   // const [userImage, setUserImage] = useState("");
   const { createUser, updateUserProfile, setLoading, providerLogin } =
     useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
   const imageHostKey = process.env.REACT_APP_IMGBB_API_KEY;
   const {
     register,
@@ -41,6 +43,15 @@ const Register = () => {
             .catch((error) => toast.error(error.message));
         }
       });
+  };
+
+  const handleGoogleLogin = () => {
+    providerLogin(googleProvider).then((result) => {
+      const user = result.user;
+      console.log(user);
+      toast.success("Sign In Success");
+      // navigate(from, { replace: true });
+    });
   };
 
   const handleUpdateUserProfile = (fullName, userImage) => {
@@ -152,7 +163,7 @@ const Register = () => {
           </form>
           <div>
             <button
-              // onClick={handleGoogleLogin}
+              onClick={handleGoogleLogin}
               className="btn w-full btn-outline btn-primary text-lg"
             >
               Continue With Google

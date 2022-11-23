@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import {Link} from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+
+  const {logInUser,providerLogin} = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
   const {
     register,
     formState: { errors },
@@ -11,15 +17,23 @@ const Login = () => {
 
   const handleLogin = data => {
     console.log(data);
-    // logInUser(data.email, data.password)
-    // .then(result => {
-    //   const user = result.user;
-    //   console.log(user);
-    //   toast.success('Sign In Success');
-    //   // navigate(from, { replace: true });
-    //   setLoginUserEmail(data.email)
-    // })
+    logInUser(data.email, data.password)
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+      toast.success('Sign In Success');
+      // navigate(from, { replace: true });
+      // setLoginUserEmail(data.email)
+    })
   }
+  const handleGoogleLogin = () => {
+    providerLogin(googleProvider).then((result) => {
+      const user = result.user;
+      console.log(user);
+      toast.success("Sign In Success");
+      // navigate(from, { replace: true });
+    });
+  };
   return (
     <div className="container mx-auto my-20">
       <div className="flex justify-center items-center">
@@ -80,7 +94,7 @@ const Login = () => {
           </form>
           <div>
             <button
-              // onClick={handleGoogleLogin}
+              onClick={handleGoogleLogin}
               className="btn w-full btn-outline btn-primary text-lg"
             >
               Continue With Google

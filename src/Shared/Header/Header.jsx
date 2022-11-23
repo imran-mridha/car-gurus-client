@@ -2,9 +2,15 @@ import React, { useContext, useState } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Context/AuthProvider';
+import { toast } from "react-toastify";
 
 const Header = () => {
-  const {user} = useContext(AuthContext)
+  const {user, logOut} = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut().then(() => {
+      toast.success("Sign Out Success");
+    });
+  };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = <>
     <li className='hover:text-theme-default'><Link to='/'>Home</Link></li>
@@ -12,13 +18,10 @@ const Header = () => {
     <li className='hover:text-theme-default'><Link to='/'>Services</Link></li>
     <li className='hover:text-theme-default'><Link to='/'>Blog</Link></li>
     <li className='hover:text-theme-default'><Link to='/'>Contact</Link></li>
-    <li className='hover:text-theme-default'><Link to='/orders'>Orders</Link></li>
-    <li className='hover:text-theme-default'><Link>Logout</Link></li>
-    <li className='hover:text-theme-default'><Link to='/login'>Login</Link></li>
     {
       user?.email ?
         <>
-          <li className='hover:text-theme-default'><Link to='/orders'>Orders</Link></li>
+          <li className='hover:text-theme-default'><Link to='/dashboard'>Dashboard</Link></li>
           <li onClick={handleLogOut} className='hover:text-theme-default'><Link>Logout</Link></li>
         </>
         :
