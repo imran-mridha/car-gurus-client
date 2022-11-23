@@ -30,7 +30,7 @@ const Header = () => {
   </>
   return (
     <div className="bg-secondary">
-      <div className="container mx-auto px-6 pt-6 navbar flex justify-between">
+      <div className="container mx-auto navbar flex justify-between">
         <div className="">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
