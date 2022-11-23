@@ -1,6 +1,7 @@
 import Dashoard from "../../Pages/Dashoard/Dashoard/Dashoard";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main");
@@ -25,7 +26,8 @@ export const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashoard />
+        element: <PrivateRoute><Dashoard /></PrivateRoute>
+        // element: <Dashoard />
       },
     ]
   }
