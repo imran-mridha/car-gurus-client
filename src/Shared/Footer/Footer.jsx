@@ -4,11 +4,11 @@ import logo from '../../assets/logo.png'
 const Footer = () => {
   return (
     <footer className="bg-secondary text-white">
-      <div className="container px-6 pt-6 w-11/12 mx-auto">
+      <div className="container mx-auto px-6 pt-6">
         <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2">
           <div className="mb-6">
             <div className="text-white text-3xl md:text-start flex items-center justify-center mb-3">
-              <img className='w-3/4' src={logo} alt="" />
+              <img className='w-36' src={logo} alt="" />
               {/* <h2 className="uppercase">Smile <span className="text-yellow-400 font-extrabold">Builders</span></h2> */}
             </div>
             <p className="text-center md:text-start">There’s no substitute for compassion, no shortcut when it comes to sincerity.</p>
