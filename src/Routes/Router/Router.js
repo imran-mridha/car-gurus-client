@@ -1,4 +1,5 @@
-import Dashoard from "../../Pages/Dashoard/Dashoard/Dashoard";
+import DashboardLayout from "../../Layouts/DashboardLayout";
+import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -24,10 +25,15 @@ export const router = createBrowserRouter([
         path: 'login',
         element: <Login />
       },
+    ]
+  },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+    children: [
       {
-        path: 'dashboard',
-        element: <PrivateRoute><Dashoard /></PrivateRoute>
-        // element: <Dashoard />
+        path:'/dashboard',
+        element: <DashBoard />
       },
     ]
   }

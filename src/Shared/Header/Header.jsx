@@ -65,7 +65,7 @@ const Header = () => {
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal p-0 text-white">{menuItems}</ul>
         </div>
-        <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+        {/* <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -80,7 +80,7 @@ const Header = () => {
               d="M4 6h16M4 12h8m-8 6h16"
             />
           </svg>
-        </label>
+        </label> */}
       </div>
     </div>
   );

@@ -8,24 +8,26 @@ import Category from "./Category";
 
 
 const Categories = () => {
-  const categories = [
-    {
-      name: 'Toyota',
-      image: toyota
-    },
-    {
-      name: 'Mercedes',
-      image: mercedes
-    },
-    {
-      name: 'Volkswagen',
-      image: volkswagen
-    },
-    {
-      name: 'Hyundai',
-      image: hyundai
-    },
-  ]
+  // const categories = 
+  // [
+  //   {
+  //     "name": "Toyota",
+  //     "image": "toyota"
+  //   },
+  //   {
+  //     "name": "Mercedes",
+  //     "image": "mercedes"
+  //   },
+  //   {
+  //     "name": "Volkswagen",
+  //     "image": "volkswagen"
+  //   },
+  //   {
+  //     "name": "Hyundai",
+  //     "image": "hyundai"
+  //   }
+  // ]
+  
   return (
     <div className="my-20 container mx-auto">
       <div className="text-center">
