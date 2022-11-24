@@ -9,7 +9,7 @@ const Loader = () => {
               width="100"
               color="#FC0012"
               wrapperStyle={{}}
-              wrapperClass=""
+              wrapperclassName=""
               visible={true}
               outerCircleColor=""
               innerCircleColor=""

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
+import { AuthContext } from "../../../Context/AuthProvider";
 const { format } = require("date-fns");
 
 const AddProducts = () => {
+  const {user} = useContext(AuthContext)
   const date = format(new Date(), "PP");
   const {
     register,
@@ -23,13 +25,12 @@ const AddProducts = () => {
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/categories`);
       const data = await res.json();
+
       return data;
     },
   });
 
   const handleAddProduct = (data) => {
-    // console.log(data);
-
     const image = data.image[0];
     // console.log(image);
 
@@ -56,7 +57,10 @@ const AddProducts = () => {
             phone: data.phone,
             description: data.description,
             image: imgData.data.url,
-            date
+            date,
+            sellerName: user?.displayName,
+            sellerEmail: user?.email,
+            sellerImage: user?.photoURL
           };
 
           fetch(`${process.env.REACT_APP_API_URL}/products`, {
@@ -85,7 +89,7 @@ const AddProducts = () => {
   }
   return (
     <div className="w-[600px] mx-auto my-20">
-      <h2 className="text-3xl mb-5">Add A Doctor</h2>
+      <h2 className="text-3xl mb-5">Add A Product</h2>
       <form onSubmit={handleSubmit(handleAddProduct)}>
         <div className="space-y-3">
           <span className="text-lg block text-gray-600">Product Name</span>
@@ -139,7 +143,7 @@ const AddProducts = () => {
               className="select select-bordered w-full"
             >
               {categories.map((category) => (
-                <option key={category._id} value={category.name}>
+                <option key={category._id}  value={category.name}>
                   {category.name}
                 </option>
               ))}
@@ -242,8 +246,8 @@ const AddProducts = () => {
         </div>
         <input
           type="submit"
-          value="Add Doctor"
-          className="w-full btn bg-accent my-5"
+          value="Add Product"
+          className="w-full btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
         />
       </form>
     </div>

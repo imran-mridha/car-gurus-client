@@ -1,13 +1,22 @@
-import React, { useContext } from "react";
-import {Link} from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  const { logInUser, providerLogin } = useContext(AuthContext);
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
 
-  const {logInUser,providerLogin} = useContext(AuthContext);
+  if (token) {
+    navigate(from, { replace: true });
+  }
   const googleProvider = new GoogleAuthProvider();
   const {
     register,
@@ -15,24 +24,43 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const handleLogin = data => {
+  const handleLogin = (data) => {
     console.log(data);
-    logInUser(data.email, data.password)
-    .then(result => {
+    logInUser(data.email, data.password).then((result) => {
       const user = result.user;
       console.log(user);
-      toast.success('Sign In Success');
+      toast.success("Sign In Success", {autoClose: 500});
       // navigate(from, { replace: true });
-      // setLoginUserEmail(data.email)
-    })
-  }
+      setLoginUserEmail(data.email)
+    });
+  };
   const handleGoogleLogin = () => {
-    providerLogin(googleProvider).then((result) => {
+    providerLogin(googleProvider)
+    .then((result) => {
       const user = result.user;
       console.log(user);
       toast.success("Sign In Success");
       // navigate(from, { replace: true });
-    });
+      // setLoginUserEmail(user?.email)
+      saveUser(user?.displayName, user?.email,'buyer',user?.photoURL)
+    })
+    .catch(error => toast.error(error.message, {autoClose: 500}))
+  };
+  const saveUser = (name, email,role, image) => {
+    const user = { name, email, role, image };
+
+    fetch(`${process.env.REACT_APP_API_URL}/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLoginUserEmail(email);
+      });
   };
   return (
     <div className="container mx-auto my-20">
@@ -77,7 +105,7 @@ const Login = () => {
             <input
               type="submit"
               value="Login"
-              className="w-full btn bg-accent my-5 text-xl"
+              className="w-full btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
             />
             <span className="text-center text-sm block">
               New To doctors portal?{" "}
@@ -95,7 +123,7 @@ const Login = () => {
           <div>
             <button
               onClick={handleGoogleLogin}
-              className="btn w-full btn-outline btn-primary text-lg"
+              className="btn w-full bg-secondary border border-secondary hover:bg-primary hover:border-primary text-lg"
             >
               Continue With Google
             </button>

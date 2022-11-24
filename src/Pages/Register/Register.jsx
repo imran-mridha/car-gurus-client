@@ -1,12 +1,23 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link,useLocation,useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../hooks/useToken";
 
 const Register = () => {
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [createdUserEmail, setCreatedUserEmail] = useState("");
+
+  const [token] = useToken(createdUserEmail);
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
   const { createUser, updateUserProfile, setLoading, providerLogin } =
     useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
@@ -38,7 +49,7 @@ const Register = () => {
               console.log(user);
               toast.success("SignUp Success", { autoClose: 500 });
               handleUpdateUserProfile(data.name, imgData.data.url);
-              saveUser(data.name, data.email, imgData.data.url);
+              saveUser(data.name, data.email,data.role,imgData.data.url);
             })
             .catch((error) => toast.error(error.message));
         }
@@ -50,7 +61,7 @@ const Register = () => {
       const user = result.user;
       console.log(user);
       toast.success("Sign In Success");
-      // navigate(from, { replace: true });
+      saveUser(user?.displayName, user?.email,'buyer',user?.photoURL)
     });
   };
 
@@ -69,8 +80,8 @@ const Register = () => {
       });
   };
 
-  const saveUser = (name, email, image) => {
-    const user = { name, email,image };
+  const saveUser = (name, email,role, image) => {
+    const user = { name, email, role, image };
 
     fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: "POST",
@@ -124,7 +135,7 @@ const Register = () => {
                 className="w-full input input-bordered input-md text-xl block"
                 {...register("role")}
               >
-                <option select="true" value="buyer">
+                <option selected value="buyer">
                   Buyer
                 </option>
                 <option value="seller">Seller</option>
@@ -166,7 +177,7 @@ const Register = () => {
             <input
               type="submit"
               value="Sign Up"
-              className="w-full btn bg-accent my-5 text-xl"
+              className="w-full btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
             />
             <span className="text-center text-sm block">
               Already have an account?{" "}
@@ -181,7 +192,7 @@ const Register = () => {
           <div>
             <button
               onClick={handleGoogleLogin}
-              className="btn w-full btn-outline btn-primary text-lg"
+              className="btn w-full bg-secondary border border-secondary hover:bg-primary hover:border-primary text-lg"
             >
               Continue With Google
             </button>

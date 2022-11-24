@@ -3,10 +3,29 @@ import { Outlet, Link } from "react-router-dom";
 import DashboardNav from "../Pages/DashBoard/DashBoard/DashboardNav";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from "../assets/logo/logo.png";
-import { FaHome, FaUsers } from "react-icons/fa";
+import { toast } from "react-toastify";
+import {
+  FaHome,
+  FaUsers,
+  FaShoppingCart,
+  FaCar,
+  FaCarSide,
+} from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
+import useSeller from "../hooks/UseSeller";
 
 const DashboardLayout = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
+
+  const handleLogOut = () => {
+    logOut().then(() => {
+      toast.success("Sign Out Success");
+    });
+  };
+
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -18,34 +37,34 @@ const DashboardLayout = () => {
 
         {/* <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
       </div>
-      <div className="drawer-side bg-secondary">
+      <div className="drawer-side bg-secondary overflow-hidden">
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
 
-        <div className="menu p-4 w-80 text-white flex flex-col justify-between">
+        <div className="menu p-4 w-80 text-white">
           <div>
             <img className="w-3/4" src={logo} alt="" />
           </div>
 
-          <div className="mt-5">
+          <div className="mt-5 flex-1">
             <ul className="space-y-2">
               {/* <!-- Sidebar content here --> */}
               <li>
                 <Link
                   to="/"
-                  class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <FaHome />
-                  <span class="ml-2">Home</span>
+                  <span className="ml-2">Home</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/dashboard"
-                  class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <svg
                     aria-hidden="true"
-                    class="w-5 h-5 text-white"
+                    className="w-5 h-5 text-white"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,45 +72,85 @@ const DashboardLayout = () => {
                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                   </svg>
-                  <span class="ml-2">Dashboard</span>
+                  <span className="ml-2">Dashboard</span>
                 </Link>
-              </li>
-              <li>
-                <Link
-                  to="buyers"
-                  class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <FaUsers />
-                  <span class="ml-2">All Byers</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="sellers"
-                  class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <FaUsers />
-                  <span class="ml-2">Sellers</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="products"
-                  class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <FaUsers />
-                  <span class="ml-2">All Products</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/dashboard/add-products"
-                  class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <FaUsers />
-                  <span class="ml-2">Add Products</span>
-                </Link>
-              </li>
+              </li> */}
+              {!isAdmin && !isSeller && (
+                <>
+                  <li>
+                    <Link
+                      to="my-orders"
+                      className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <FaShoppingCart />
+                      <span className="ml-2">My Orders</span>
+                    </Link>
+                  </li>
+                </>
+              )}
+              {isSeller && (
+                <>
+                  <li>
+                    <Link
+                      to="/dashboard/add-products"
+                      className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <FaCar />
+                      <span className="ml-2">Add A Product</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="my-products"
+                      className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <FaCarSide />
+                      <span className="ml-2">My Products</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="my-buyers"
+                      className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <FaUsers />
+                      <span className="ml-2">My Buyers</span>
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {isAdmin && (
+                <>
+                  <li>
+                    <Link
+                      to="all-sellers"
+                      className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <FaUsers />
+                      <span className="ml-2">All Sellers</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="all-buyers"
+                      className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <FaUsers />
+                      <span className="ml-2">All Byers</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="reported-items"
+                      className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <FaUsers />
+                      <span className="ml-2">Reported Items</span>
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -101,7 +160,10 @@ const DashboardLayout = () => {
               src={user?.photoURL}
               alt="UserImage"
             />
-            <button className="btn btn-sm border border-primary bg-secondary hover-border-primary hover:bg-primary">
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm border border-primary bg-secondary hover-border-primary hover:bg-primary"
+            >
               Log Out
             </button>
           </div>
