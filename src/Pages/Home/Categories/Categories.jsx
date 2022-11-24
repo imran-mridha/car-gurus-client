@@ -5,28 +5,22 @@ import volkswagen from "../../../assets/categories/volkswagen.png";
 import hyundai from "../../../assets/categories/hyundai.png";
 import toyota from "../../../assets/categories/toyota.png";
 import Category from "./Category";
+import { useQuery } from "@tanstack/react-query";
 
 
 const Categories = () => {
-  // const categories = 
-  // [
-  //   {
-  //     "name": "Toyota",
-  //     "image": "toyota"
-  //   },
-  //   {
-  //     "name": "Mercedes",
-  //     "image": "mercedes"
-  //   },
-  //   {
-  //     "name": "Volkswagen",
-  //     "image": "volkswagen"
-  //   },
-  //   {
-  //     "name": "Hyundai",
-  //     "image": "hyundai"
-  //   }
-  // ]
+  const url = `${process.env.REACT_APP_API_URL}/categories`;
+
+  const { data: categories = [] } = useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      // console.log(data);
+      return data;
+    },
+  });
+ 
   
   return (
     <div className="my-20 container mx-auto">

@@ -1,4 +1,5 @@
 import DashboardLayout from "../../Layouts/DashboardLayout";
+import AddProducts from "../../Pages/DashBoard/AddProducts/AddProducts";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
@@ -32,8 +33,12 @@ export const router = createBrowserRouter([
     element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
     children: [
       {
-        path:'/dashboard',
+        path:'/dashboard', 
         element: <DashBoard />
+      },
+      {
+        path:'/dashboard/add-products', 
+        element: <AddProducts />
       },
     ]
   }

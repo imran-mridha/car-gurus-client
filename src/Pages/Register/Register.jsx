@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
-  // const [userImage, setUserImage] = useState("");
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
   const { createUser, updateUserProfile, setLoading, providerLogin } =
     useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
   const imageHostKey = process.env.REACT_APP_IMGBB_API_KEY;
   const {
     register,
@@ -38,7 +38,7 @@ const Register = () => {
               console.log(user);
               toast.success("SignUp Success", { autoClose: 500 });
               handleUpdateUserProfile(data.name, imgData.data.url);
-              // saveUser(data.name, data.email);
+              saveUser(data.name, data.email, imgData.data.url);
             })
             .catch((error) => toast.error(error.message));
         }
@@ -66,6 +66,23 @@ const Register = () => {
       })
       .catch((error) => {
         toast.error(error.message);
+      });
+  };
+
+  const saveUser = (name, email, image) => {
+    const user = { name, email,image };
+
+    fetch(`${process.env.REACT_APP_API_URL}/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCreatedUserEmail(email);
       });
   };
 

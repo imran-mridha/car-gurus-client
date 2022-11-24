@@ -10,7 +10,7 @@ const DashboardLayout = () => {
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
+      <div className="drawer-content overflow-hidden">
         {/* <!-- Page content here --> */}
         <DashboardNav />
 
@@ -18,7 +18,7 @@ const DashboardLayout = () => {
 
         {/* <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
       </div>
-      <div className="drawer-side ">
+      <div className="drawer-side bg-secondary">
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
 
         <div className="menu p-4 w-80 text-white flex flex-col justify-between">
@@ -40,7 +40,7 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/dashboard"
                   class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <svg
@@ -85,7 +85,7 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link
-                  to="add-products"
+                  to="/dashboard/add-products"
                   class="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <FaUsers />
