@@ -76,7 +76,7 @@ const AddProducts = () => {
               console.log(result);
               if (result.acknowledged) {
                 toast.success(`${data.name} is added successfull`);
-                // navigate("/dashboard/managedoctors");
+                navigate("/dashboard/my-products");
               }
             });
         }
