@@ -51,7 +51,7 @@ const MyProducts = () => {
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
-              <tr>
+              <tr className="bg-primary">
                 <th>Product</th>
                 <th>Image</th>
                 <th>Price</th>

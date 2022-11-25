@@ -4,6 +4,7 @@ import AddProducts from "../../Pages/DashBoard/AddProducts/AddProducts";
 import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/DashBoard/AllSellers/AllSellers";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
+import Payment from "../../Pages/DashBoard/DashBoard/Payment";
 import MyBuyers from "../../Pages/DashBoard/MyBuyers/MyBuyers";
 import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/DashBoard/MyProducts/MyProducts";
@@ -78,6 +79,11 @@ export const router = createBrowserRouter([
         path:'/dashboard/reported-items', 
         element: <ReportedItems />
       },
+      {
+        path:'/dashboard/payment/:id',
+        element: <Payment />,
+        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`)
+      }
     ]
   }
 ])

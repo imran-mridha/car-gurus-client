@@ -1,44 +1,27 @@
 import React, { useContext } from "react";
-import { format } from "date-fns";
-import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
-import toast from "react-hot-toast";
+import { AuthContext } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
 
-const BookingModal = ({ product }) => {
-
-  const {
-    name,
-    orginalPrice,
-    resalePrice,
-    date,
-    usagesYear,
-    description,
-    phone,
-    quality,
-    sellerImage,
-    sellerName,
-  } = product;
-
-  const { name, slots, price } = treatment;
-  const date = format(selectedDate, "PP");
+const BookingModal = ({ productData, seProductData }) => {
+  const { name, resalePrice } = productData;
 
   const { user } = useContext(AuthContext);
 
   const handleBooking = (event) => {
     event.preventDefault();
     const form = event.target;
-    const slot = form.slot.value;
-    const patientName = form.name.value;
-    const email = form.email.value;
     const phone = form.phone.value;
+    const location = form.location.value;
+    const email = form.email.value;
 
     const booking = {
-      appoinmentDate: date,
-      treatment: name,
-      patient: patientName,
-      slot,
-      email,
-      phone,
-      price
+      image: productData.image,
+      name: productData.name,
+      price: productData.resalePrice,
+      buyerPhone: phone,
+      buyerLocation: location,
+      bookingId: productData._id,
+      email
     };
 
     fetch(`${process.env.REACT_APP_API_URL}/bookings`, {
@@ -52,12 +35,11 @@ const BookingModal = ({ product }) => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Booking Confirmed");
-          setTreatment(null);
-          refetch();
-        }else{
+          seProductData(null);
+          // refetch();
+        } else {
           toast.error(data.message)
         }
-        
       });
   };
   return (
@@ -71,21 +53,14 @@ const BookingModal = ({ product }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">{name}</h3>
-          <form onSubmit={handleBooking} className="mt-5 space-y-5">
-            <input
-              type="text"
-              disabled
-              value={date}
-              className="input input-bordered w-full"
-            />
-            <select name="slot" className="select select-bordered w-full">
-              {slots.map((slot, idx) => (
-                <option key={idx} value={slot}>
-                  {slot}
-                </option>
-              ))}
-            </select>
+          <div className="text-gray-600">
+            <h3 className="text-lg font-bold">{name}</h3>
+            <p>Price: ${resalePrice}</p>
+          </div>
+          <form
+            onSubmit={handleBooking}
+            className="mt-5 space-y-5 text-gray-600"
+          >
             <input
               type="text"
               name="name"
@@ -102,10 +77,18 @@ const BookingModal = ({ product }) => {
               placeholder="Email Address"
               className="input input-bordered w-full"
             />
+
             <input
               type="text"
               name="phone"
               placeholder="Phone Number"
+              className="input input-bordered w-full"
+            />
+            
+            <input
+              type="text"
+              name="location"
+              placeholder="Location"
               className="input input-bordered w-full"
             />
             <input

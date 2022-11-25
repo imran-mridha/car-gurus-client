@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider";
-import BookingModal from "./BookingModal";
+import { FaFlag } from "react-icons/fa";
 
-const Product = ({ product }) => {
+const Product = ({ product,productData, seProductData }) => {
   const { user } = useContext(AuthContext);
+  
   const {
     image,
     name,
@@ -61,16 +62,17 @@ const Product = ({ product }) => {
           </div>
           <button
             type="button"
-            title="Bookmark post"
+            title="Report"
             className="flex items-center justify-center"
           >
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
               className="w-5 h-5 fill-current"
             >
               <path d="M424,496H388.75L256.008,381.19,123.467,496H88V16H424ZM120,48V456.667l135.992-117.8L392,456.5V48Z"></path>
-            </svg>
+            </svg> */}
+            <FaFlag />
           </button>
         </div>
         <div className="my-5">
@@ -96,11 +98,15 @@ const Product = ({ product }) => {
           </div>
         </div>
         <div className="my-5">
-          <button className="btn bg-primary w-full hover:bg-secondary">
-            Book Now
-          </button>
+          <label
+          // disabled={isSeller}
+            onClick={() => seProductData(product)}
+            // disabled={slots.length === 0}
+            htmlFor="booking-modal"
+            className="btn bg-primary w-full hover:bg-secondary"
+
+          >Book Now</label>
         </div>
-        {user && <BookingModal product={product} />}
       </div>
     </div>
   );
