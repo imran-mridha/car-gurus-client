@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../Context/AuthProvider";
 import Loader from "../../../Shared/Loader/Loader";
+import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
+import { toast } from "react-toastify";
 
 const MyProducts = () => {
+  const [deleatingProduct, setDeleatingProduct] = useState(null);
+
+  const closeModal = () => {
+    setDeleatingProduct(null);
+  };
   const { user } = useContext(AuthContext);
-  const { data: products, isLoading } = useQuery({
+  const { data: products, isLoading,refetch } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
       const res = await fetch(
@@ -17,6 +24,22 @@ const MyProducts = () => {
   });
 
   console.log(products);
+
+  const handleDeleteProduct = (product) => {
+    fetch(`${process.env.REACT_APP_API_URL}/products/${product._id}`, {
+      method: "DELETE",
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      // },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success(`Product ${product.name} deleted successfully`);
+          refetch();
+        }
+      });
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -68,29 +91,29 @@ const MyProducts = () => {
                   </label>
                 </td>
                 <td>
-                  <label
-                    // onClick={() => setDeleatingDoctor(doctor)}
-                    htmlFor="confirmation-modal"
-                    className="btn btn-xs btn-error"
-                  >
-                    Delete
-                  </label>
+                <label
+                      onClick={() => setDeleatingProduct(product)}
+                      htmlFor="confirmation-modal"
+                      className="btn btn-xs btn-error"
+                    >
+                      Delete
+                    </label>
                 </td>
               </tr>)
               }
             </tbody>
           </table>
         </div>
-        {/* {deleatingDoctor && (
+        {deleatingProduct && (
         <ConfirmationModal
           title={`Are you sure want to delete?`}
-          message={`If You Delete ${deleatingDoctor.name}, It cannot be undone.`}
-          successAction={handleDeleteDoctor}
+          message={`If You Delete ${deleatingProduct.name}, It cannot be undone.`}
+          successAction={handleDeleteProduct}
           successBtnName="Delete"
-          modalData={deleatingDoctor}
+          modalData={deleatingProduct}
           closeModal={closeModal}
         />
-      )} */}
+      )}
       </div>
     </div>
   );

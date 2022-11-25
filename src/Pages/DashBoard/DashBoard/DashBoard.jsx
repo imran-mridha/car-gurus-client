@@ -5,10 +5,10 @@ const DashBoard = () => {
   const { user } = useContext(AuthContext);
   return (
     <div>
-      <div className="flex flex-col justify-center items-center">
+      {/* <div className="flex flex-col justify-center items-center">
         <img className="w-16 h-16" src={user?.photoURL} alt="" />
         <p>{user?.displayName}</p>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import DashboardLayout from "../../Layouts/DashboardLayout";
+import CategoryProducts from "../../Pages/CategoryProducts/CategoryProducts";
 import AddProducts from "../../Pages/DashBoard/AddProducts/AddProducts";
 import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
-import AllProducts from "../../Pages/DashBoard/AllProducts/AllProducts";
 import AllSellers from "../../Pages/DashBoard/AllSellers/AllSellers";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import MyBuyers from "../../Pages/DashBoard/MyBuyers/MyBuyers";
@@ -33,6 +33,13 @@ export const router = createBrowserRouter([
         path: 'login',
         element: <Login />
       },
+      {
+        path: '/products/:categoryId',
+        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/products/${params.categoryId}`),
+        element: <CategoryProducts />
+      }
+      
+      
     ]
   },
   {

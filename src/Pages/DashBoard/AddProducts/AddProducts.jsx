@@ -49,7 +49,7 @@ const AddProducts = () => {
           const product = {
             name: data.name,
             location: data.location,
-            category: data.category,
+            categoryId: data.category,
             quality: data.quality,
             resalePrice: data.resalePrice,
             orginalPrice: data.orginalPrice,
@@ -143,7 +143,7 @@ const AddProducts = () => {
               className="select select-bordered w-full"
             >
               {categories.map((category) => (
-                <option key={category._id}  value={category.name}>
+                <option key={category._id}  value={category._id}>
                   {category.name}
                 </option>
               ))}

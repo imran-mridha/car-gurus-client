@@ -1,9 +1,4 @@
 import React from "react";
-import honda from "../../../assets/categories/honda.png";
-import mercedes from "../../../assets/categories/mercedes.png";
-import volkswagen from "../../../assets/categories/volkswagen.png";
-import hyundai from "../../../assets/categories/hyundai.png";
-import toyota from "../../../assets/categories/toyota.png";
 import Category from "./Category";
 import { useQuery } from "@tanstack/react-query";
 
