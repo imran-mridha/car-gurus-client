@@ -53,13 +53,13 @@ const ReportedItems = () => {
           <table className="table w-full">
             <thead>
               <tr className="text-center">
-                <th className="bg-primary text-white text-xl">Buyer Name</th>
-                <th className="bg-primary text-white text-xl">Email</th>
-                <th className="bg-primary text-white text-xl">Product Name</th>
-                <th className="bg-primary text-white text-xl">Product Image</th>
-                <th className="bg-primary text-white text-xl">Message</th>
+                <th className="bg-primary text-white text-lg">Buyer Name</th>
+                <th className="bg-primary text-white text-lg">Email</th>
+                <th className="bg-primary text-white text-lg">Product Name</th>
+                <th className="bg-primary text-white text-lg">Product Image</th>
+                <th className="bg-primary text-white text-lg">Message</th>
                 {/* <th className="bg-primary text-white text-xl">Advertised</th> */}
-                <th className="bg-primary text-white text-xl">Acotion</th>
+                <th className="bg-primary text-white text-lg">Acotion</th>
               </tr>
             </thead>
             <tbody>

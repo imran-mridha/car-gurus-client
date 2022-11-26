@@ -5,6 +5,9 @@ import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import { GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../hooks/useToken";
+import Lottie from "lottie-react";
+import reader from "../../assets/login/loginAnimation.json";
+
 
 const Login = () => {
   let navigate = useNavigate();
@@ -26,13 +29,15 @@ const Login = () => {
 
   const handleLogin = (data) => {
     console.log(data);
-    logInUser(data.email, data.password).then((result) => {
+    logInUser(data.email, data.password)
+    .then((result) => {
       const user = result.user;
       console.log(user);
       toast.success("Sign In Success", {autoClose: 500});
       // navigate(from, { replace: true });
       setLoginUserEmail(data.email)
-    });
+    })
+    .catch(error => toast.error(error.message, {autoClose: 500}))
   };
   const handleGoogleLogin = () => {
     providerLogin(googleProvider)
@@ -64,11 +69,15 @@ const Login = () => {
   };
   return (
     <div className="container mx-auto my-20">
-      <div className="flex justify-center items-center">
-        <div className="p-5 shadow-2xl rounded-lg w-full mx-5 md:mx-0 lg:w-96">
-          <h2 className="text-2xl mb-5 text-center">Login</h2>
+      <div className="flex flex-col lg:flex-row lg:justify-between overflow-hidden mx-5 md:mx-0 gap-10 lg:gap-32">
+        <div className="w-9/12 mx-auto">
+        <Lottie className="" animationData={reader} loop={true} />
+        </div>
+        <div className="border rounded-lg mx-5 w-11/12 lg:w-full p-5 md:p-10">
+          <h2 className="text-4xl mb-10 text-center font-semibold">Login</h2>
           <form onSubmit={handleSubmit(handleLogin)}>
-            <div className="space-y-3">
+            <div className="flex flex-col md:flex-row gap-5 ">
+            <div className="space-y-3 w-full">
               <span className="text-lg block">Email</span>
               <input
                 {...register("email", {
@@ -81,8 +90,8 @@ const Login = () => {
                 <p className="text-red-600">{errors.email?.message}</p>
               )}
             </div>
-            <div className="space-y-3">
-              <span className="text-lg block mt-3">Password</span>
+            <div className="space-y-3 w-full">
+              <span className="text-lg block mt-3 md:mt-0">Password</span>
               <input
                 {...register("password", {
                   required: "Password Is Required",
@@ -95,13 +104,16 @@ const Login = () => {
                 className="w-full input input-bordered input-md text-xl block"
               />
 
-              <span className="label-text-alt flex justify-end">
+              {/* <span className="label-text-alt flex justify-end">
                 Forgot Password?
-              </span>
+              </span> */}
               {errors.password && (
                 <p className="text-red-600">{errors.password?.message}</p>
               )}
             </div>
+            </div>
+            
+            
             <input
               type="submit"
               value="Login"
@@ -116,9 +128,6 @@ const Login = () => {
             <div className="flex flex-col w-full border-opacity-50">
               <div className="divider">OR</div>
             </div>
-            {/* <div>
-              <button onClick={handleGoogleLogin} className='btn w-full btn-outline btn-primary text-lg'>Continue With Google</button>
-            </div> */}
           </form>
           <div>
             <button
@@ -127,7 +136,7 @@ const Login = () => {
             >
               Continue With Google
             </button>
-          </div>
+          </div> 
         </div>
       </div>
     </div>

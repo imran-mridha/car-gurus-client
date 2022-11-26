@@ -26,7 +26,7 @@ const About = () => {
             </p>
             <p className="self-center text-2xl font-semibold w-6/12">Year's Experience in used  Car Selling With Car Gurus.</p>
           </div>
-          <button className="btn btn-md border border-primary bg-primary hover:bg-secondary mt-10">Explore More</button>
+          <button className="btn btn-md border border-secondary bg-secondary hover:bg-primary hover:border-primary mt-10">Explore More</button>
         </div>
       </div>
     </div>

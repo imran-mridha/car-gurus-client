@@ -3,8 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import AllProduct from "./AllProduct";
 import BookingModal from "../../CategoryProducts/BookingModal";
+import ReportingModal from "../../CategoryProducts/ReportingModal";
 
 const AllProducts = () => {
+  const [reportData, seReportData] = useState(null);
   const [productData, seProductData] = useState(null);
   const { data: products, isLoading } = useQuery({
     queryKey: ["products"],
@@ -28,6 +30,7 @@ const AllProducts = () => {
             product={product}
             productData={productData}
             seProductData={seProductData}
+            seReportData={seReportData}
           />
         ))}
       </div>
@@ -36,6 +39,15 @@ const AllProducts = () => {
           <BookingModal
             productData={productData}
             seProductData={seProductData}
+          />
+        )}
+      </div>
+      <div>
+        {reportData && (
+          <ReportingModal
+          reportData={reportData}
+          seReportData={seReportData}
+          productData={productData}
           />
         )}
       </div>

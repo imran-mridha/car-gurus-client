@@ -4,6 +4,7 @@ import DashboardNav from "../Pages/DashBoard/DashBoard/DashboardNav";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from "../assets/logo/logo.png";
 import { toast } from "react-toastify";
+import { ScrollRestoration } from "react-router-dom";
 import {
   FaHome,
   FaUsers,
@@ -32,6 +33,7 @@ const DashboardLayout = () => {
       <div className="drawer-content bg-gray-100">
         <DashboardNav />
         <div>
+          <ScrollRestoration />
           <Outlet />
         </div>
       </div>

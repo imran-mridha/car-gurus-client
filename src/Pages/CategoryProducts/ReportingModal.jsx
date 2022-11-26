@@ -86,7 +86,7 @@ const ReportingModal = ({ reportData, seReportData }) => {
             <input
               type="submit"
               value="Submit"
-              className="input input-bordered w-full bg-accent text-white text-xl cursor-pointer"
+              className="input input-bordered w-full text-white text-xl cursor-pointer bg-primary hover:bg-secondary"
             />
           </form>
         </div>

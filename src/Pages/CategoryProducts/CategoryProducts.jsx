@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import Loader from "../../Shared/Loader/Loader";
 import BookingModal from "./BookingModal";
 import Product from "./Product";
 import ReportingModal from "./ReportingModal";
@@ -11,6 +12,10 @@ const CategoryProducts = () => {
   const [reportData, seReportData] = useState(null);
   const products = useLoaderData();
   console.log(products);
+
+  if(!products){
+    return <Loader />
+  }
   return (
     <div className="container mx-auto my-20">
       <div className="mx-5 md:mx-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

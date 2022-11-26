@@ -88,7 +88,7 @@ const AddProducts = () => {
     return <Loader />;
   }
   return (
-    <div className="w-[600px] mx-auto my-20">
+    <div className="w-[600px] mx-auto my-20 bg-white p-10 rounded-lg">
       <h2 className="text-3xl mb-5">Add A Product</h2>
       <form onSubmit={handleSubmit(handleAddProduct)}>
         <div className="space-y-3">
@@ -240,7 +240,7 @@ const AddProducts = () => {
             {...register("description", {
               required: "Product Description is required",
             })}
-            className="textarea textarea-bordered w-full h-40"
+            className="textarea textarea-bordered w-full h-32"
             placeholder="product details"
           ></textarea>
         </div>

@@ -4,17 +4,21 @@ import About from '../About/About';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
+import Contact from '../Contact/Contact';
 import Poster from '../Poster/Poster';
+import Reviews from '../Reviews/Reviews';
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <Categories />
       <AdvertisedItems />
+      <Categories />
       <About />
       <ChooseUs />
       <Poster />
+      <Reviews />
+      <Contact />
       
     </div>
   );

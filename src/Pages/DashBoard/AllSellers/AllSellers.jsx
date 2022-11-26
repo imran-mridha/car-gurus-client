@@ -26,21 +26,21 @@ const AllSellers = () => {
   console.log(sellers);
 
   const handleVerifiedSeller = (seller) => {
-    fetch(`${process.env.REACT_APP_API_URL}/sellers/verified/${seller.email}`,{
-      method: 'PUT',
+    fetch(`${process.env.REACT_APP_API_URL}/sellers/verified/${seller.email}`, {
+      method: "PUT",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
         // authorization: `bearer ${localStorage.getItem("accessToken")}`
       },
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.modifiedCount > 0){
-        toast.success('Seller Verify Success..');
-        refetch()
-      }
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Seller Verify Success..");
+          refetch();
+        }
+      });
+  };
 
   const handleDeleteSeller = (seller) => {
     fetch(`${process.env.REACT_APP_API_URL}/sellers/${seller._id}`, {
@@ -63,19 +63,16 @@ const AllSellers = () => {
   }
   return (
     <div className="mx-20 mt-10">
-      <h2 className="mb-5 text-3xl font-semibold">
-        All Sellers: {sellers.length}
-      </h2>
       <div>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
               <tr className="text-center">
-                <th className="bg-primary text-white text-xl">Image</th>
-                <th className="bg-primary text-white text-xl">Seller Name</th>
-                <th className="bg-primary text-white text-xl">Email</th>
-                <th className="bg-primary text-white text-xl">Verification</th>
-                <th className="bg-primary text-white text-xl">Action</th>
+                <th className="bg-primary text-white text-lg">Image</th>
+                <th className="bg-primary text-white text-lg">Seller Name</th>
+                <th className="bg-primary text-white text-lg">Email</th>
+                <th className="bg-primary text-white text-lg">Verification</th>
+                <th className="bg-primary text-white text-lg">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -89,32 +86,45 @@ const AllSellers = () => {
                     />
                   </td>
                   <td className="">
-                    <span>{seller.name}
-                    {
-                      seller.verified ? <FaCheckCircle className="text-blue-500" /> : <FaCheckCircle /> 
-                    }
-                    
-                    </span>
+                    <div className="flex items-center">
+                      <span>
+                        {seller.name}
+                        {seller.verified ? (
+                          <div className="tooltip tooltip-top" data-tip="Veryfied">
+                          <FaCheckCircle
+                            className="text-blue-500 ml-1"
+                          />
+                          </div>
+                        ) : (
+                          <div className="tooltip tooltip-top" data-tip="Unveryfied">
+                            <FaCheckCircle />
+                          </div>
+                        )}
+                      </span>
+                    </div>
                   </td>
                   <td>{seller.email}</td>
-                  {
-                    !seller.verified ?
+                  {!seller.verified ? (
                     <td>
-                    <button
-                    onClick={()=>handleVerifiedSeller(seller)}
-                     className="btn btn-sm btn-primary">Verify</button>
-                  </td>
-                  :
-                  <td>
-                    <button
-                     className="btn btn-sm btn-primary">Verified</button>
-                  </td>
-                  }
+                      <button
+                        onClick={() => handleVerifiedSeller(seller)}
+                        className="btn btn-sm bg-primary"
+                      >
+                        Verify
+                      </button>
+                    </td>
+                  ) : (
+                    <td>
+                      <button className="btn btn-sm bg-secondary">
+                        Verified
+                      </button>
+                    </td>
+                  )}
                   <td>
                     <label
                       onClick={() => setDeleatingSeller(seller)}
                       htmlFor="confirmation-modal"
-                      className="btn btn-xs btn-error"
+                      className="btn btn-sm btn-error"
                     >
                       Delete
                     </label>

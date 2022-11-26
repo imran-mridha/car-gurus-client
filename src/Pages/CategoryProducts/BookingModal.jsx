@@ -94,7 +94,7 @@ const BookingModal = ({ productData, seProductData }) => {
             <input
               type="submit"
               value="Submit"
-              className="input input-bordered w-full bg-accent text-white text-xl cursor-pointer"
+              className="input input-bordered w-full bg-primary hover:bg-secondary text-white text-xl cursor-pointer"
             />
           </form>
         </div>

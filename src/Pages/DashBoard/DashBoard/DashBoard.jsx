@@ -4,11 +4,13 @@ import { AuthContext } from "../../../Context/AuthProvider";
 const DashBoard = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div>
-      {/* <div className="flex flex-col justify-center items-center">
-        <img className="w-16 h-16" src={user?.photoURL} alt="" />
-        <p>{user?.displayName}</p>
-      </div> */}
+    <div className="w-96 mx-auto my-20">
+      <div className="p-10 w-11/12 mx-auto text-center shadow-lg rounded-lg">
+        <img className="w-20 h-20 rounded-full mx-auto" src={user?.photoURL} alt="" />
+        <h2 className="text-4xl mt-3 uppercase font-semibold">Wellcome</h2>
+        <p className="text-4xl text-semibold my-3">{user?.displayName}</p>
+        <p>{user?.email}</p>
+      </div>
     </div>
   );
 };

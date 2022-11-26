@@ -69,13 +69,13 @@ const makeAdvertised = (product)=>{
           <table className="table w-full">
             <thead>
               <tr className="text-center">
-                <th className="bg-primary text-white text-xl">Product</th>
-                <th className="bg-primary text-white text-xl">Image</th>
-                <th className="bg-primary text-white text-xl">Price</th>
-                <th className="bg-primary text-white text-xl">Date</th>
-                <th className="bg-primary text-white text-xl">Status</th>
-                <th className="bg-primary text-white text-xl">Advertised</th>
-                <th className="bg-primary text-white text-xl">Acotion</th>
+                <th className="bg-primary text-white text-lg">Product</th>
+                <th className="bg-primary text-white text-lg">Image</th>
+                <th className="bg-primary text-white text-lg">Price</th>
+                <th className="bg-primary text-white text-lg">Date</th>
+                <th className="bg-primary text-white text-lg">Status</th>
+                <th className="bg-primary text-white text-lg">Advertised</th>
+                <th className="bg-primary text-white text-lg">Acotion</th>
                 
               </tr>
             </thead>
@@ -115,17 +115,13 @@ const makeAdvertised = (product)=>{
                     // onClick={() => setDeleatingDoctor(doctor)}
                     // htmlFor="confirmation-modal"
                     onClick={()=> makeAdvertised(product)}
-                    className="btn btn-xs btn-primary"
+                    className="btn btn-sm bg-primary"
                   >
                     Make Advertised
                   </button>
                   :
                   <button
-                  // disabled={product.status === "sold"}
-                    // onClick={() => setDeleatingDoctor(doctor)}
-                    // htmlFor="confirmation-modal"
-                    // onClick={()=> makeAdvertised(product)}
-                    className="btn btn-xs btn-primary"
+                    className="btn btn-sm bg-secondary"
                   >
                     Advertised On
                   </button>
@@ -136,7 +132,7 @@ const makeAdvertised = (product)=>{
                 <label
                       onClick={() => setDeleatingProduct(product)}
                       htmlFor="confirmation-modal"
-                      className="btn btn-xs btn-error"
+                      className="btn btn-sm btn-error"
                     >
                       Delete
                     </label>

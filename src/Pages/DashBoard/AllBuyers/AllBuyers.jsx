@@ -53,11 +53,11 @@ const AllBuyers = () => {
           <table className="table w-full">
             <thead>
               <tr className="text-center">
-                <th className="bg-primary text-white text-xl">Image</th>
-                <th className="bg-primary text-white text-xl">Byuer Name</th>
-                <th className="bg-primary text-white text-xl">Email</th>
-                <th className="bg-primary text-white text-xl">Verification</th>
-                <th className="bg-primary text-white text-xl">Action</th>
+                <th className="bg-primary text-white text-lg">Image</th>
+                <th className="bg-primary text-white text-lg">Byuer Name</th>
+                <th className="bg-primary text-white text-lg">Email</th>
+                
+                <th className="bg-primary text-white text-lg">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -73,13 +73,10 @@ const AllBuyers = () => {
                   <td>{buyer.name}</td>
                   <td>{buyer.email}</td>
                   <td>
-                    <button className="btn btn-sm btn-primary">Verify</button>
-                  </td>
-                  <td>
                     <label
                       onClick={() => setDeleatingBuyer(buyer)}
                       htmlFor="confirmation-modal"
-                      className="btn btn-xs btn-error"
+                      className="btn btn-sm btn-error"
                     >
                       Delete
                     </label>

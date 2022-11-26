@@ -1,12 +1,13 @@
 import React from "react";
 import Category from "./Category";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../Shared/Loader/Loader";
 
 
 const Categories = () => {
   const url = `${process.env.REACT_APP_API_URL}/categories`;
 
-  const { data: categories = [] } = useQuery({
+  const { data: categories = [], isLoading } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       const res = await fetch(url);
@@ -15,6 +16,10 @@ const Categories = () => {
       return data;
     },
   });
+
+  if(isLoading){
+    return <Loader />
+  }
  
   
   return (
