@@ -19,6 +19,7 @@ const Product = ({ product, productData, seProductData, seReportData }) => {
     quality,
     sellerImage,
     sellerName,
+    verified
   } = product;
   return (
     <div className="rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100">
@@ -32,9 +33,16 @@ const Product = ({ product, productData, seProductData, seReportData }) => {
           <div className="-space-y-1">
             <h2 className="text-sm font-semibold leading-none">{sellerName}</h2>
           </div>
+          {
+            verified ? <div>
+            <FaCheckCircle className="text-blue-500" />
+          </div>
+          :
           <div>
             <FaCheckCircle />
           </div>
+          }
+          
         </div>
         <p>{date}</p>
       </div>

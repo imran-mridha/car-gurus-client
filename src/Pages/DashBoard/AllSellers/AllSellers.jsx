@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
 import { toast } from "react-toastify";
+import { FaCheckCircle } from "react-icons/fa";
 
 const AllSellers = () => {
   const [deleatingSeller, setDeleatingSeller] = useState(null);
@@ -23,6 +24,23 @@ const AllSellers = () => {
   });
 
   console.log(sellers);
+
+  const handleVerifiedSeller = (seller) => {
+    fetch(`${process.env.REACT_APP_API_URL}/sellers/verified/${seller.email}`,{
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        // authorization: `bearer ${localStorage.getItem("accessToken")}`
+      },
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.modifiedCount > 0){
+        toast.success('Seller Verify Success..');
+        refetch()
+      }
+    })
+  }
 
   const handleDeleteSeller = (seller) => {
     fetch(`${process.env.REACT_APP_API_URL}/sellers/${seller._id}`, {
@@ -70,11 +88,28 @@ const AllSellers = () => {
                       alt=""
                     />
                   </td>
-                  <td>{seller.name}</td>
-                  <td>{seller.email}</td>
-                  <td>
-                    <button className="btn btn-sm btn-primary">Verify</button>
+                  <td className="">
+                    <span>{seller.name}
+                    {
+                      seller.verified ? <FaCheckCircle className="text-blue-500" /> : <FaCheckCircle /> 
+                    }
+                    
+                    </span>
                   </td>
+                  <td>{seller.email}</td>
+                  {
+                    !seller.verified ?
+                    <td>
+                    <button
+                    onClick={()=>handleVerifiedSeller(seller)}
+                     className="btn btn-sm btn-primary">Verify</button>
+                  </td>
+                  :
+                  <td>
+                    <button
+                     className="btn btn-sm btn-primary">Verified</button>
+                  </td>
+                  }
                   <td>
                     <label
                       onClick={() => setDeleatingSeller(seller)}

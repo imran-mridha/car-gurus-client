@@ -1,7 +1,7 @@
-import React from 'react';
-import { FaCheckCircle, FaFlag } from 'react-icons/fa';
+import React from "react";
+import { FaCheckCircle, FaFlag } from "react-icons/fa";
 
-const AdvertisedSlide = ({ product,productData,seProductData }) => {
+const AdvertisedSlide = ({ product, productData, seProductData }) => {
   const {
     image,
     name,
@@ -13,32 +13,49 @@ const AdvertisedSlide = ({ product,productData,seProductData }) => {
     description,
     phone,
     quality,
+    isAdvertise,
     sellerImage,
     sellerName,
+    verified,
+    status,
   } = product;
   return (
-    <div className="rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100">
+    <div>
+      {
+        !status && 
+        <div className="rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100">
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center space-x-2">
-          <img
-            src={sellerImage}
-            alt=""
-            className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
-          />
+          <div>
+            <img
+              src={sellerImage}
+              alt=""
+              className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
+            />
+          </div>
           <div className="-space-y-1">
             <h2 className="text-sm font-semibold leading-none">{sellerName}</h2>
           </div>
-          <div>
-            <FaCheckCircle />
-          </div>
+          {verified ? (
+            <div>
+              <FaCheckCircle title="Verified" className="text-blue-500" />
+            </div>
+          ) : (
+            <div>
+              <FaCheckCircle title="Unverified" />
+            </div>
+          )}
         </div>
         <p>{date}</p>
       </div>
-      <img
-        src={image}
-        alt=""
-        className="object-cover object-center w-full h-72 bg-gray-500"
-      />
+      <div className="relative">
+        <img
+          src={image}
+          alt=""
+          className="object-cover object-center w-full h-72 bg-gray-500"
+        />
+        <p className="absolute top-0 right-0 bg-primary px-2">{isAdvertise && <span>Advertised</span>}</p>
+      </div>
       <div className="p-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -95,15 +112,18 @@ const AdvertisedSlide = ({ product,productData,seProductData }) => {
         </div>
         <div className="my-5">
           <label
-          // disabled={isSeller}
+            // disabled={isSeller}
             onClick={() => seProductData(product)}
             // disabled={slots.length === 0}
             htmlFor="booking-modal"
             className="btn bg-primary w-full hover:bg-secondary"
-
-          >Book Now</label>
+          >
+            Book Now
+          </label>
         </div>
       </div>
+    </div>
+      }
     </div>
   );
 };
