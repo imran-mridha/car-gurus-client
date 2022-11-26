@@ -3,10 +3,12 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import BookingModal from "./BookingModal";
 import Product from "./Product";
+import ReportingModal from "./ReportingModal";
 
 const CategoryProducts = () => {
   const { user } = useContext(AuthContext);
   const [productData, seProductData] = useState(null);
+  const [reportData, seReportData] = useState(null);
   const products = useLoaderData();
   console.log(products);
   return (
@@ -18,12 +20,27 @@ const CategoryProducts = () => {
             product={product}
             productData={productData}
             seProductData={seProductData}
+            seReportData={seReportData}
           />
         ))}
       </div>
-      {productData && (
-        <BookingModal productData={productData} seProductData={seProductData} />
-      )}
+      <div>
+        {productData && (
+          <BookingModal
+            productData={productData}
+            seProductData={seProductData}
+          />
+        )}
+      </div>
+      <div>
+        {reportData && (
+          <ReportingModal
+          reportData={reportData}
+          seReportData={seReportData}
+          productData={productData}
+          />
+        )}
+      </div>
     </div>
   );
 };

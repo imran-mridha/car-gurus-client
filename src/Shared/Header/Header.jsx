@@ -15,7 +15,7 @@ const Header = () => {
   const menuItems = <>
     <li className='hover:text-primary'><Link to='/'>Home</Link></li>
     <li className='hover:text-primary'><Link to='/'>About</Link></li>
-    <li className='hover:text-primary'><Link to='/'>Services</Link></li>
+    <li className='hover:text-primary'><Link to='/all-products'>Products</Link></li>
     <li className='hover:text-primary'><Link to='/'>Blog</Link></li>
     <li className='hover:text-primary'><Link to='/'>Contact</Link></li>
     {

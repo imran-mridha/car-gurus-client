@@ -12,7 +12,7 @@ const CheckoutForm = ({ booking }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const { price, email, patient,_id } = booking;
+  const { price, email, patient,_id, productId } = booking;
 
   const navigate = useNavigate()
 
@@ -76,7 +76,8 @@ const CheckoutForm = ({ booking }) => {
         price,
         tanjectionId: paymentIntent.id,
         email,
-        bookingId: _id
+        bookingId: _id,
+        productId: productId
       };
 
       // store payment info in the database

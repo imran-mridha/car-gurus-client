@@ -25,6 +25,23 @@ const MyProducts = () => {
 
   console.log(products);
 
+const makeAdvertised = (product)=>{
+  fetch(`${process.env.REACT_APP_API_URL}/makeAdvertise/${product?._id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      // authorization: `bearer ${localStorage.getItem("accessToken")}`
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.modifiedCount > 0){
+      toast.success('Make advertice success.')
+      refetch()
+    }
+  })
+  .catch(error => console.error(error))
+}
   const handleDeleteProduct = (product) => {
     fetch(`${process.env.REACT_APP_API_URL}/products/${product._id}`, {
       method: "DELETE",
@@ -45,24 +62,26 @@ const MyProducts = () => {
     return <Loader />;
   }
   return (
-    <div className="mx-20 mt-10">
-      <h2 className="mb-5 text-3xl font-semibold">My Products: {products.length}</h2>
+    <div className="mx-20 my-10">
+      
       <div >
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
-              <tr className="bg-primary">
-                <th>Product</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Date</th>
-                <th>Advertised</th>
-                <th>Acotion</th>
+              <tr className="text-center">
+                <th className="bg-primary text-white text-xl">Product</th>
+                <th className="bg-primary text-white text-xl">Image</th>
+                <th className="bg-primary text-white text-xl">Price</th>
+                <th className="bg-primary text-white text-xl">Date</th>
+                <th className="bg-primary text-white text-xl">Status</th>
+                <th className="bg-primary text-white text-xl">Advertised</th>
+                <th className="bg-primary text-white text-xl">Acotion</th>
+                
               </tr>
             </thead>
             <tbody>
               {
-                products.map(product => <tr className="hover">
+                products.map(product => <tr key={product._id} className="hover text-center ">
                 {/* <td>{i + 1}</td> */}
                 <td>
                   <h2 className="text-xl font-bold">{product.name}</h2>
@@ -80,15 +99,38 @@ const MyProducts = () => {
                   <p>Resale Price: {product.resalePrice}</p>
                 </td>
                 <td>{product.date}</td>
+               
+                <td>
+                {
+                  product.status === "sold" ? <span className="uppercase font-bold">{product.status}</span>: <span className="uppercase font-bold">Available</span>
+                }
+                </td>
                 {/* <td>{product.specialty}</td> */}
                 <td>
-                  <label
+                
+                  {
+                    !product?.isAdvertise ? 
+                    <button
+                  // disabled={product.status === "sold"}
                     // onClick={() => setDeleatingDoctor(doctor)}
-                    htmlFor="confirmation-modal"
+                    // htmlFor="confirmation-modal"
+                    onClick={()=> makeAdvertised(product)}
                     className="btn btn-xs btn-primary"
                   >
-                    Advertised
-                  </label>
+                    Make Advertised
+                  </button>
+                  :
+                  <button
+                  // disabled={product.status === "sold"}
+                    // onClick={() => setDeleatingDoctor(doctor)}
+                    // htmlFor="confirmation-modal"
+                    // onClick={()=> makeAdvertised(product)}
+                    className="btn btn-xs btn-primary"
+                  >
+                    Advertised On
+                  </button>
+                  }
+                  
                 </td>
                 <td>
                 <label

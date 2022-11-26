@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import { FaCheckCircle } from "react-icons/fa";
-import { AuthContext } from "../../Context/AuthProvider";
-import { FaFlag } from "react-icons/fa";
+import { FaCheckCircle, FaFlag } from "react-icons/fa";
+import { AuthContext } from "../../../Context/AuthProvider";
 
-const Product = ({ product, productData, seProductData, seReportData }) => {
+const AllProduct = ({ product,productData,seProductData }) => {
   const { user } = useContext(AuthContext);
-
+  
   const {
     image,
     name,
@@ -60,15 +59,20 @@ const Product = ({ product, productData, seProductData, seReportData }) => {
               </svg>
             </button>
           </div>
-          <label
-            onClick={() => seReportData(product)}
+          <button
             type="button"
             title="Report"
-            className="flex items-center justify-center cursor-pointer"
-            htmlFor="reporting-modal"
+            className="flex items-center justify-center"
           >
+            {/* <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              className="w-5 h-5 fill-current"
+            >
+              <path d="M424,496H388.75L256.008,381.19,123.467,496H88V16H424ZM120,48V456.667l135.992-117.8L392,456.5V48Z"></path>
+            </svg> */}
             <FaFlag />
-          </label>
+          </button>
         </div>
         <div className="my-5">
           <div className="my-5">
@@ -94,18 +98,17 @@ const Product = ({ product, productData, seProductData, seReportData }) => {
         </div>
         <div className="my-5">
           <label
-            // disabled={isSeller}
+          // disabled={isSeller}
             onClick={() => seProductData(product)}
             // disabled={slots.length === 0}
             htmlFor="booking-modal"
             className="btn bg-primary w-full hover:bg-secondary"
-          >
-            Book Now
-          </label>
+
+          >Book Now</label>
         </div>
       </div>
     </div>
   );
 };
 
-export default Product;
+export default AllProduct;

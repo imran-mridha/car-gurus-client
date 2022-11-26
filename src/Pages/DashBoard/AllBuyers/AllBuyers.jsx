@@ -53,11 +53,11 @@ const AllBuyers = () => {
           <table className="table w-full">
             <thead>
               <tr className="text-center">
-                <th>Image</th>
-                <th>Byuer Name</th>
-                <th>Email</th>
-                <th>Verification</th>
-                <th>Action</th>
+                <th className="bg-primary text-white text-xl">Image</th>
+                <th className="bg-primary text-white text-xl">Byuer Name</th>
+                <th className="bg-primary text-white text-xl">Email</th>
+                <th className="bg-primary text-white text-xl">Verification</th>
+                <th className="bg-primary text-white text-xl">Action</th>
               </tr>
             </thead>
             <tbody>

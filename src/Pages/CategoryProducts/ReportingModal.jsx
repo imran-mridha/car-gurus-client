@@ -2,63 +2,59 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 
-const BookingModal = ({ productData, seProductData }) => {
-  const { name, resalePrice } = productData;
+const ReportingModal = ({ reportData, seReportData }) => {
+  const { name } = reportData;
 
   const { user } = useContext(AuthContext);
 
-  const handleBooking = (event) => {
+  const handleReporting = (event) => {
     event.preventDefault();
     const form = event.target;
-    const phone = form.phone.value;
-    const location = form.location.value;
-    const email = form.email.value;
+    const message = form.message.value;
 
-    const booking = {
-      image: productData.image,
-      name: productData.name,
-      price: productData.resalePrice,
-      buyerPhone: phone,
-      buyerLocation: location,
-      productId: productData._id,
-      email
+    const report = {
+      image: reportData.image,
+      name: reportData.name,
+      productId: reportData._id,
+      email: user.email,
+      userName: user.displayName,
+      message: message,
     };
 
-    fetch(`${process.env.REACT_APP_API_URL}/bookings`, {
+    fetch(`${process.env.REACT_APP_API_URL}/reporting`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(booking),
+      body: JSON.stringify(report),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          toast.success("Booking Confirmed");
-          seProductData(null);
+          toast.success("Report Confirmed");
+          seReportData(null);
           // refetch();
         } else {
-          toast.error(data.message)
+          toast.error(data.message);
         }
       });
   };
   return (
     <>
-      <input type="checkbox" id="booking-modal" className="modal-toggle" />
+      <input type="checkbox" id="reporting-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
           <label
-            htmlFor="booking-modal"
+            htmlFor="reporting-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
           <div className="text-gray-600">
             <h3 className="text-lg font-bold">{name}</h3>
-            <p>Price: ${resalePrice}</p>
           </div>
           <form
-            onSubmit={handleBooking}
+            onSubmit={handleReporting}
             className="mt-5 space-y-5 text-gray-600"
           >
             <input
@@ -78,19 +74,15 @@ const BookingModal = ({ productData, seProductData }) => {
               className="input input-bordered w-full"
             />
 
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone Number"
-              className="input input-bordered w-full"
-            />
-            
-            <input
-              type="text"
-              name="location"
-              placeholder="Location"
-              className="input input-bordered w-full"
-            />
+            <textarea
+              className="input input-bordered w-full h-20"
+              placeholder="Your Message"
+              name="message"
+              id=""
+              cols="30"
+              rows="10"
+            ></textarea>
+
             <input
               type="submit"
               value="Submit"
@@ -103,4 +95,4 @@ const BookingModal = ({ productData, seProductData }) => {
   );
 };
 
-export default BookingModal;
+export default ReportingModal;
