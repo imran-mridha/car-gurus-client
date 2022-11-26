@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
 
 const DashBoard = () => {
+  useTitle('Dahboard')
   const { user } = useContext(AuthContext);
   return (
-    <div className="w-96 mx-auto my-20">
+    <div className="w-11/12 lg:w-6/12 mx-auto my-20">
       <div className="p-10 w-11/12 mx-auto text-center shadow-lg rounded-lg">
         <img className="w-20 h-20 rounded-full mx-auto" src={user?.photoURL} alt="" />
         <h2 className="text-4xl mt-3 uppercase font-semibold">Wellcome</h2>

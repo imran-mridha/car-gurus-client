@@ -3,8 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
 import { toast } from "react-toastify";
+import useTitle from "../../../hooks/useTitle";
 
 const AllBuyers = () => {
+  useTitle('All-Buyers')
   const [deleatingBuyer, setDeleatingBuyer] = useState(null);
   const closeModal = () => {
     setDeleatingBuyer(null);

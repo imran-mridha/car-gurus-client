@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
 import DashboardNav from "../Pages/DashBoard/DashBoard/DashboardNav";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from "../assets/logo/logo.png";
@@ -66,73 +66,56 @@ const DashboardLayout = () => {
               </svg>
             </label>
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
               >
                 <FaHome />
                 <span className="ml-2">Home</span>
-              </Link>
+              </NavLink>
             </li>
-            {/* <li>
-                <Link
-                  to="/dashboard"
-                  className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                  </svg>
-                  <span className="ml-2">Dashboard</span>
-                </Link>
-              </li> */}
+            
             {!isAdmin && !isSeller && (
               <>
                 <li>
-                  <Link
+                  <NavLink
                     to="my-orders"
-                    className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
                   >
                     <FaShoppingCart />
                     <span className="ml-2">My Orders</span>
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
             {isSeller && (
               <>
                 <li>
-                  <Link
+                  <NavLink
                     to="/dashboard/add-products"
-                    className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
                   >
                     <FaCar />
                     <span className="ml-2">Add A Product</span>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="my-products"
-                    className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
                   >
                     <FaCarSide />
                     <span className="ml-2">My Products</span>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="my-buyers"
-                    className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
                   >
                     <FaUsers />
                     <span className="ml-2">My Buyers</span>
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
@@ -140,31 +123,31 @@ const DashboardLayout = () => {
             {isAdmin && (
               <>
                 <li>
-                  <Link
+                  <NavLink
                     to="all-sellers"
-                    className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
                   >
                     <FaUsers />
                     <span className="ml-2">All Sellers</span>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="all-buyers"
-                    className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
                   >
                     <FaUsers />
                     <span className="ml-2">All Byers</span>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="reported-items"
-                    className="flex items-center py-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `}
                   >
                     <FaUsers />
                     <span className="ml-2">Reported Items</span>
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
@@ -177,7 +160,7 @@ const DashboardLayout = () => {
             />
             <button
               onClick={handleLogOut}
-              className="btn btn-sm border border-primary bg-secondary hover-border-primary hover:bg-primary"
+              className="btn btn-md border border-primary bg-secondary hover-border-primary hover:bg-primary"
             >
               Log Out
             </button>

@@ -3,6 +3,7 @@ import { FaCheckCircle, FaFlag } from "react-icons/fa";
 import { AuthContext } from "../../../Context/AuthProvider";
 
 const AllProduct = ({ product, productData, seProductData, seReportData }) => {
+
   const { user } = useContext(AuthContext);
 
   const {

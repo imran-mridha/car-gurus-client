@@ -4,8 +4,10 @@ import Loader from "../../../Shared/Loader/Loader";
 import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
 import { toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
+import useTitle from "../../../hooks/useTitle";
 
 const AllSellers = () => {
+  useTitle('All-Sellers')
   const [deleatingSeller, setDeleatingSeller] = useState(null);
   const closeModal = () => {
     setDeleatingSeller(null);

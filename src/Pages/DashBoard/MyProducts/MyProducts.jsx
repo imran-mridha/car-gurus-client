@@ -4,8 +4,10 @@ import { AuthContext } from "../../../Context/AuthProvider";
 import Loader from "../../../Shared/Loader/Loader";
 import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
 import { toast } from "react-toastify";
+import useTitle from "../../../hooks/useTitle";
 
 const MyProducts = () => {
+  useTitle('My-Products')
   const [deleatingProduct, setDeleatingProduct] = useState(null);
 
   const closeModal = () => {
@@ -115,7 +117,7 @@ const makeAdvertised = (product)=>{
                     // onClick={() => setDeleatingDoctor(doctor)}
                     // htmlFor="confirmation-modal"
                     onClick={()=> makeAdvertised(product)}
-                    className="btn btn-sm bg-primary"
+                    className="btn btn-sm bg-primary border border-primary hover:bg-primary hover:border-primary"
                   >
                     Make Advertised
                   </button>

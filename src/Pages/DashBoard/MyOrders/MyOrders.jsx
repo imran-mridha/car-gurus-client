@@ -3,8 +3,10 @@ import { AuthContext } from "../../../Context/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import { Link } from "react-router-dom";
+import useTitle from "../../../hooks/useTitle";
 
 const MyOrders = () => {
+  useTitle('My-Orders')
   const { user } = useContext(AuthContext);
   const url = `${process.env.REACT_APP_API_URL}/bookings?email=${user?.email}`;
 

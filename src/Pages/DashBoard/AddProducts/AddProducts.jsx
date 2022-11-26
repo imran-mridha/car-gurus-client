@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
 const { format } = require("date-fns");
 
 const AddProducts = () => {
+  useTitle('Add-Product')
   const {user} = useContext(AuthContext)
   const date = format(new Date(), "PP");
   const {
@@ -161,6 +163,7 @@ const AddProducts = () => {
                 Exelent
               </option>
               <option value="good">Good</option>
+              <option value="fair">Fair</option>
             </select>
             {errors.quality && (
               <p className="text-red-600">{errors.quality?.message}</p>

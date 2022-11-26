@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from "react-toastify";
@@ -13,19 +13,17 @@ const Header = () => {
   };
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = <>
-    <li className='hover:text-primary'><Link to='/'>Home</Link></li>
-    <li className='hover:text-primary'><Link to='/'>About</Link></li>
-    <li className='hover:text-primary'><Link to='/all-products'>Products</Link></li>
-    <li className='hover:text-primary'><Link to='/'>Blog</Link></li>
-    <li className='hover:text-primary'><Link to='/'>Contact</Link></li>
+    <li><NavLink className={({isActive}) => isActive ? `text-primary active:bg-transparent `: `hover:text-primary active:bg-transparent `} to='/'>Home</NavLink></li>
+    <li><NavLink className={({isActive}) => isActive ? `text-primary active:bg-transparent`: `hover:text-primary active:bg-transparent `} to='/all-products'>Products</NavLink></li>
+    <li><NavLink className={({isActive}) => isActive ? `text-primary active:bg-transparent`: `hover:text-primary active:bg-transparent`} to='/blog'>Blog</NavLink></li>
     {
       user?.email ?
         <>
-          <li className='hover:text-theme-default'><Link to='/dashboard'>Dashboard</Link></li>
-          <li onClick={handleLogOut} className='hover:text-theme-default'><Link>Logout</Link></li>
+          <li><NavLink className={({isActive}) => isActive ? `text-primary active:bg-transparent`: `hover:text-primary active:bg-transparent `} to='/dashboard'>Dashboard</NavLink></li>
+          <li onClick={handleLogOut}><NavLink className="bg-transparent " to= '/'><button className='border px-4 py-2 border-primary bg-primary duration-200 rounded text-white '>Logout</button></NavLink></li>
         </>
         :
-        <li className='hover:text-theme-default'><Link to='/login'>Login</Link></li>
+        <li className='hover:text-theme-default'><NavLink className="bg-transparent" to='/login'><button className='border py-2 px-4 border-primary bg-primary duration-200 rounded text-white'>Login</button></NavLink></li>
     }
   </>
   return (

@@ -4,8 +4,10 @@ import { AuthContext } from "../../../Context/AuthProvider";
 import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
 import { toast } from "react-toastify";
 import Loader from "../../../Shared/Loader/Loader";
+import useTitle from "../../../hooks/useTitle";
 
 const ReportedItems = () => {
+  useTitle('Reported-Items')
   const [deleatingProduct, setDeleatingProduct] = useState(null);
 
   const closeModal = () => {

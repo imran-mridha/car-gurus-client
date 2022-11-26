@@ -4,8 +4,10 @@ import Loader from "../../../Shared/Loader/Loader";
 import AllProduct from "./AllProduct";
 import BookingModal from "../../CategoryProducts/BookingModal";
 import ReportingModal from "../../CategoryProducts/ReportingModal";
+import useTitle from "../../../hooks/useTitle";
 
 const AllProducts = () => {
+  useTitle('Products')
   const [reportData, seReportData] = useState(null);
   const [productData, seProductData] = useState(null);
   const { data: products, isLoading } = useQuery({

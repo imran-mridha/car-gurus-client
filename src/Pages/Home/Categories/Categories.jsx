@@ -2,9 +2,11 @@ import React from "react";
 import Category from "./Category";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
+import useTitle from "../../../hooks/useTitle";
 
 
 const Categories = () => {
+  useTitle('Categories')
   const url = `${process.env.REACT_APP_API_URL}/categories`;
 
   const { data: categories = [], isLoading } = useQuery({
