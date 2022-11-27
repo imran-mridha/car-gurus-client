@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Category from "./Category";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
@@ -37,7 +37,7 @@ const Categories = () => {
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
 
           {
-            categories.map((category, idx) => <Category key={idx} category={category} /> ) 
+            categories.map((category) => <Category key={category._id} category={category} /> ) 
           }
           
         </div>
