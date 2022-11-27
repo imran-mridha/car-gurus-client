@@ -6,12 +6,19 @@ import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from "./Context/AuthProvider";
+import ScrollToTop from "react-scroll-to-top";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { FaArrowUp } from "react-icons/fa";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
 
+
 root.render(
   <React.StrictMode>
+    <ScrollToTop
+      smooth
+      component={<FaArrowUp className='mx-auto text-primary text-xl'></FaArrowUp>}
+    />
     <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <ToastContainer />

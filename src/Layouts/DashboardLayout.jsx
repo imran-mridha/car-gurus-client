@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import DashboardNav from "../Pages/DashBoard/DashBoard/DashboardNav";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from "../assets/logo/logo.png";
@@ -32,7 +32,7 @@ const DashboardLayout = () => {
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content bg-gray-100">
+      <div className="drawer-content bg-gray-300">
         <DashboardNav />
         <div>
           <ScrollRestoration />
@@ -44,7 +44,7 @@ const DashboardLayout = () => {
         <div className="bg-secondary w-72 flex flex-col justify-between">
           <div>
             <div>
-              <img className="w-3/5 mx-auto" src={logo} alt="" />
+              <Link to='/'><img className="w-3/5 ml-5 mt-2" src={logo} alt="" /></Link>
             </div>
             <ul className="menu p-4 text-white space-y-2">
               {/* <!-- Sidebar content here --> */}
@@ -175,12 +175,7 @@ const DashboardLayout = () => {
               )}
             </ul>
           </div>
-          <div className="my-5 p-2 flex justify-between items-center col-end-1 border-t">
-            <img
-              className="w-14 h-14 rounded-full"
-              src={user?.photoURL}
-              alt="UserImage"
-            />
+          <div className="my-5 p-2 flex justify-end items-end col-end-1 border-t">
             <button
               onClick={handleLogOut}
               className="btn btn-md border border-primary bg-secondary hover-border-primary hover:bg-primary"

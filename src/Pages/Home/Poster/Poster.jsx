@@ -7,15 +7,15 @@ const Poster = () => {
     <div className="relative container mx-auto my-20">
       <img
         src={shape}
-        className="absolute inset-0 object-cover w-full h-full"
+        className="absolute inset-0 object-cover w-full h-full rounded-lg"
         alt=""
       />
-      <div className="relative bg-black bg-opacity-90 ">
+      <div className="relative bg-black bg-opacity-90 sm:rounded-lg">
         <div className="py-20 lg:py-40">
           <div className="flex flex-col md:flex-row justify-center gap-20 flex-wrap mx-5 md:mx-0">
             <div className="flex gap-3 items-center">
-              <div className="text-5xl bg-primary text-white p-4 rounded-full">
-                <FaCarAlt />
+              <div className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
+                <FaCarAlt className="" />
               </div>
               <div className="text-white">
                 <p className="text-4xl font-semibold">45k+</p>
@@ -24,7 +24,7 @@ const Poster = () => {
             </div>
             <div>
               <div className="flex gap-3 items-center">
-                <div className="text-5xl bg-primary text-white p-4 rounded-full">
+                <div className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
                   <FaCog />
                 </div>
                 <div className="text-white">
@@ -35,7 +35,7 @@ const Poster = () => {
             </div>
             <div>
               <div className="flex gap-3 items-center">
-                <div className="text-5xl bg-primary text-white p-4 rounded-full">
+                <div className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
                   <FaUserPlus />
                 </div>
                 <div className="text-white">

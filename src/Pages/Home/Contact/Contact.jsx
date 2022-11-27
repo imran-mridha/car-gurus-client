@@ -51,41 +51,42 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <form
-            noValidate=""
-            className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid"
-          >
-            <label className="block">
-              <span className="mb-3">Full name</span>
-              <input
-                type="text"
-                placeholder="Leroy Jenkins"
-                className="block w-full rounded-md shadow-sm bg-white input-md mt-2"
-              />
-            </label>
-            <label className="block">
-              <span className="mb-1">Email address</span>
-              <input
-                type="email"
-                placeholder="leroy@jenkins.com"
-                className="block w-full rounded-md shadow-sm bg-white input-md mt-2"
-                
-              />
-            </label>
-            <label className="block">
-              <span className="mb-1">Message</span>
-              <textarea
-                rows="3"
-                className="block w-full rounded-md bg-white input-md mt-2"
-              ></textarea>
-            </label>
-            <button
-              type="button"
-              className="self-center w-full px-8 py-3 text-lg rounded bg-primary text-white  hover:bg-secondary"
+          <div className="shadow-shadow p-10 rounded-lg">
+            <form
+              noValidate=""
+              className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid"
             >
-              Submit
-            </button>
-          </form>
+              <label className="block">
+                <span className="mb-3">Full name</span>
+                <input
+                  type="text"
+                  placeholder="Leroy Jenkins"
+                  className="block w-full rounded-md shadow-sm bg-white input-md mt-2"
+                />
+              </label>
+              <label className="block">
+                <span className="mb-1">Email address</span>
+                <input
+                  type="email"
+                  placeholder="leroy@jenkins.com"
+                  className="block w-full rounded-md shadow-sm bg-white input-md mt-2"
+                />
+              </label>
+              <label className="block">
+                <span className="mb-1">Message</span>
+                <textarea
+                  rows="3"
+                  className="block w-full rounded-md bg-white input-md mt-2"
+                ></textarea>
+              </label>
+              <button
+                type="button"
+                className="self-center w-full px-8 py-3 text-lg rounded bg-primary text-white  hover:bg-secondary"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </div>

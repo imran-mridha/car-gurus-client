@@ -90,7 +90,7 @@ const AddProducts = () => {
     return <Loader />;
   }
   return (
-    <div className="w-[600px] mx-auto my-20 bg-white p-10 rounded-lg">
+    <div className="w-[600px] mx-auto my-20 bg-white p-10 rounded-lg shadow-shadow">
       <h2 className="text-3xl mb-5">Add A Product</h2>
       <form onSubmit={handleSubmit(handleAddProduct)}>
         <div className="space-y-3">

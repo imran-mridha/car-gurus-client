@@ -73,7 +73,7 @@ const Login = () => {
         <div className="w-9/12 mx-auto">
         <Lottie className="" animationData={reader} loop={true} />
         </div>
-        <div className="border rounded-lg mx-5 w-11/12 lg:w-full p-5 md:p-10">
+        <div className="border rounded-lg mx-5 w-11/12 lg:w-full p-5 md:p-10 shadow-shadow">
           <h2 className="text-4xl mb-10 text-center font-semibold">Login</h2>
           <form onSubmit={handleSubmit(handleLogin)}>
             <div className="flex flex-col md:flex-row gap-5 ">

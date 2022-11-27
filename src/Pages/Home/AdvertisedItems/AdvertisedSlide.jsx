@@ -10,31 +10,17 @@ const AdvertisedSlide = ({
 }) => {
   const {
     image,
-    name,
-    location,
-    orginalPrice,
-    resalePrice,
-    date,
-    usagesYear,
-    description,
-    phone,
-    quality,
     isAdvertise,
-    sellerImage,
-    sellerName,
-    verified,
-    status,
-    sold,
   } = product;
   return (
-    <div>
+    <div className="mx-5 md:mx-0">
       <div className="bg-gray-100 shadow-shadow text-gray-900 rounded-lg">
         <div className="relative">
           <Link to='/all-products'>
             <img
               src={image}
               alt=""
-              className="object-cover w-full h-[500px] bg-gray-500 rounded-t-lg"
+              className="object-cover w-full md:h-[300px] lg:h-[500px] bg-gray-500 rounded-t-lg"
             />
           </Link>
           <p className="absolute top-2 right-2 rounded bg-primary text-white px-2">

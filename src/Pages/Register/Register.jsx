@@ -105,7 +105,7 @@ const Register = () => {
         <div className="w-9/12 mx-auto">
           <Lottie className="" animationData={reader} loop={true} />
         </div>
-        <div className="p-5 border rounded-lg mx-5 w-11/12 lg:w-full md:p-10">
+        <div className="p-5 border rounded-lg mx-5 w-11/12 lg:w-full md:p-10 shadow-shadow">
           <h2 className="text-4xl mb-10 text-center font-semibold">Sign Up</h2>
           <form onSubmit={handleSubmit(handleRegister)}>
             <div className="flex flex-col md:flex-row gap-5">
