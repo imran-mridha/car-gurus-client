@@ -28,7 +28,6 @@ const AdvertisedItems = () => {
     },
   });
 
-  console.log(advertiseItems);
   if (isLoading) {
     return <Loader />;
   }

@@ -1,28 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Category from "./Category";
+import axios from 'axios'
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import useTitle from "../../../hooks/useTitle";
+import { AuthContext } from "../../../Context/AuthProvider";
 
 
 const Categories = () => {
   useTitle('Categories')
-  const url = `${process.env.REACT_APP_API_URL}/categories`;
 
-  const { data: categories = [], isLoading } = useQuery({
-    queryKey: ["categories"],
-    queryFn: async () => {
-      const res = await fetch(url);
-      const data = await res.json();
-      // console.log(data);
-      return data;
-    },
-  });
+  const{loading} = useContext(AuthContext)
 
-  if(isLoading){
+  const [categories, setCategories] = useState([]);
+
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_API_URL}/categories`)
+    .then(res => {
+      setCategories(res.data)
+    })
+  },[])
+
+  if(loading){
     return <Loader />
   }
- 
   
   return (
     <div className="my-20 container mx-auto">

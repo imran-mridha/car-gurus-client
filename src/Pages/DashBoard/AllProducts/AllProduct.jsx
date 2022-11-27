@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import { FaCheckCircle, FaFlag } from "react-icons/fa";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useSeller from "../../../hooks/UseSeller";
 
-const AllProduct = ({ product, productData, seProductData, seReportData }) => {
+const AllProduct = ({ product, seProductData, seReportData }) => {
 
-  const { user } = useContext(AuthContext);
+  const {user} = useContext(AuthContext)
+
+  const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
 
   const {
     image,
@@ -109,7 +114,7 @@ const AllProduct = ({ product, productData, seProductData, seReportData }) => {
           </div>
           <div className="my-5">
             <label
-              // disabled={isSeller}
+              // disabled={isSeller || isAdmin}
               onClick={() => seProductData(product)}
               // disabled={slots.length === 0}
               htmlFor="booking-modal"
