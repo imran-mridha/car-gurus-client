@@ -1,3 +1,4 @@
+import { format, formatDistanceToNow } from "date-fns";
 import React, { useContext } from "react";
 import { FaCheckCircle, FaFlag } from "react-icons/fa";
 import { AuthContext } from "../../../Context/AuthProvider";
@@ -5,8 +6,7 @@ import useAdmin from "../../../hooks/useAdmin";
 import useSeller from "../../../hooks/UseSeller";
 
 const AllProduct = ({ product, seProductData, seReportData }) => {
-
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
@@ -25,42 +25,21 @@ const AllProduct = ({ product, seProductData, seReportData }) => {
     sellerImage,
     sellerName,
     status,
+    isAdvertise
   } = product;
+
+  const time = formatDistanceToNow(new Date(date), { includeSeconds: true });
   return (
     <div>
-      <div className="rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100">
-        <div className="flex items-center justify-between p-3">
-          <div className="flex items-center space-x-2">
-            <img
-              src={sellerImage}
-              alt=""
-              className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
-            />
-            <div className="-space-y-1">
-              <h2 className="text-sm font-semibold leading-none">
-                {sellerName}
-              </h2>
-            </div>
-            {verified ? (
-              <div className="tooltip tooltip-right" data-tip="Veryfied">
-                <FaCheckCircle className="text-blue-500" />
-              </div>
-            ) : (
-              <div className="tooltip tooltip-right" data-tip="Unveryfied">
-                <FaCheckCircle />
-              </div>
-            )}
-          </div>
-          <p>{date}</p>
-        </div>
+      <div className="rounded-md shadow-shadow sm:w-96 p-4 text-gray-900">
         <div className="relative">
           <img
             src={image}
             alt=""
             className="object-cover object-center w-full h-72 bg-gray-500"
           />
-          <p className="absolute top-0 right-0 bg-primary px-2">
-            {status === "sold" ? <span>Sold</span> : <span>Available</span>}
+          <p className="absolute top-2 right-2 rounded bg-primary px-2 text-white">
+            {isAdvertise  ? <span>Advertised</span> : <span>Available</span>}
           </p>
         </div>
         <div className="p-3">
@@ -112,16 +91,41 @@ const AllProduct = ({ product, seProductData, seReportData }) => {
               <p>Usages: {usagesYear} years</p>
             </div>
           </div>
-          <div className="my-5">
-            <label
-              // disabled={isSeller || isAdmin}
-              onClick={() => seProductData(product)}
-              // disabled={slots.length === 0}
-              htmlFor="booking-modal"
-              className="btn bg-primary w-full hover:bg-secondary"
-            >
-              Book Now
-            </label>
+          <div className="my-5 flex justify-between">
+            <div>
+              <div className="flex items-end">
+                <p className="mr-2">Seller: {sellerName}</p>
+                <div>
+                  {verified ? (
+                    <div className="tooltip tooltip-right" data-tip="Veryfied">
+                      <FaCheckCircle className="text-blue-500" />
+                    </div>
+                  ) : (
+                    <div
+                      className="tooltip tooltip-right"
+                      data-tip="Unveryfied"
+                    >
+                      <FaCheckCircle />
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="tooltip tooltip-top" data-tip={format (new Date(date), 'PPPPp')}>
+                <span className="">Posted: {time}</span>
+              </div>
+            </div>
+
+            <div>
+              <label
+                disabled={isSeller || isAdmin}
+                onClick={() => seProductData(product)}
+                // disabled={slots.length === 0}
+                htmlFor="booking-modal"
+                className="btn bg-primary border border-primary w-full hover:bg-secondary"
+              >
+                Book Now
+              </label>
+            </div>
           </div>
         </div>
       </div>

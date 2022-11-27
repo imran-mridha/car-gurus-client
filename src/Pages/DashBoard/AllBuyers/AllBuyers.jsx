@@ -18,7 +18,11 @@ const AllBuyers = () => {
   } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/buyers`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/buyers`,{
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        }
+      });
       const data = await res.json();
       return data;
     },
@@ -29,9 +33,9 @@ const AllBuyers = () => {
   const handleDeleteBuyer = (buyer) => {
     fetch(`${process.env.REACT_APP_API_URL}/buyers/${buyer._id}`, {
       method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

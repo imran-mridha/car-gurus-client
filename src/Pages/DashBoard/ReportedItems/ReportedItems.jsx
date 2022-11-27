@@ -23,7 +23,11 @@ const ReportedItems = () => {
   } = useQuery({
     queryKey: ["reporting"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/reporting`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/reporting`,{
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        }
+      });
       const data = await res.json();
       return data;
     },
@@ -32,9 +36,9 @@ const ReportedItems = () => {
   const handleDeleteProduct = (product) => {
     fetch(`${process.env.REACT_APP_API_URL}/reporting/${product._id}`, {
       method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

@@ -13,7 +13,11 @@ const AllProducts = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/products`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`
+        }
+      });
       const data = await res.json();
       return data;
     },

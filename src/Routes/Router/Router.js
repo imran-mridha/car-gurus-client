@@ -14,7 +14,10 @@ import ReportedItems from "../../Pages/DashBoard/ReportedItems/ReportedItems";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layouts/Main");
@@ -44,12 +47,16 @@ export const router = createBrowserRouter([
       },
       {
         path: 'all-products',
-        element: <AllProducts />
+        element: <PrivateRoute><AllProducts /></PrivateRoute>
       },
       {
         path: '/products/:categoryId',
-        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/products/${params.categoryId}`),
-        element: <CategoryProducts />
+        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/products/${params.categoryId}` ,{
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`
+          }
+        }),
+        element: <PrivateRoute><CategoryProducts /></PrivateRoute>
       }
       
       
@@ -61,40 +68,40 @@ export const router = createBrowserRouter([
     children: [
       {
         path:'/dashboard', 
-        element: <DashBoard />
+        element: <PrivateRoute><DashBoard /></PrivateRoute>
       },
       {
         path:'/dashboard/my-orders', 
-        element: <MyOrders />
+        element: <BuyerRoute><MyOrders /></BuyerRoute>
       },
       {
         path:'/dashboard/add-products', 
-        element: <AddProducts />
+        element: <SellerRoute><AddProducts /></SellerRoute>
       },
       {
         path:'/dashboard/my-products', 
-        element: <MyProducts />
-      },
-      {
-        path:'/dashboard/my-buyers', 
-        element: <MyBuyers />
+        element: <SellerRoute><MyProducts /></SellerRoute>
       },
       {
         path:'/dashboard/all-sellers', 
-        element: <AllSellers />
+        element: <AdminRoute><AllSellers /></AdminRoute>
       },
       {
         path:'/dashboard/all-buyers', 
-        element: <AllBuyers />
+        element: <AdminRoute><AllBuyers /></AdminRoute>
       },
       {
         path:'/dashboard/reported-items', 
-        element: <ReportedItems />
+        element: <AdminRoute><ReportedItems /></AdminRoute>
       },
       {
         path:'/dashboard/payment/:id',
-        element: <Payment />,
-        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`)
+        element:<BuyerRoute > <Payment /></BuyerRoute>,
+        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`,{
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`
+          }
+        })
       }
     ]
   }

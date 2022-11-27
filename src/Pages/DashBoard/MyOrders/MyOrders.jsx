@@ -29,9 +29,6 @@ const MyOrders = () => {
   }
   return (
     <div className="mx-20 my-10">
-      {/* <h2 className="mb-5 text-3xl font-semibold">
-        My Bookings: {bookings.length}
-      </h2> */}
       <div>
         <div className="overflow-x-auto">
           <table className="table w-full">

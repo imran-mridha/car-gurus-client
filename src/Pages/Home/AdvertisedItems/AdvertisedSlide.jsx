@@ -1,7 +1,13 @@
 import React from "react";
 import { FaCheckCircle, FaFlag } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const AdvertisedSlide = ({ product, productData, seProductData,seReportData }) => {
+const AdvertisedSlide = ({
+  product,
+  productData,
+  seProductData,
+  seReportData,
+}) => {
   const {
     image,
     name,
@@ -18,45 +24,21 @@ const AdvertisedSlide = ({ product, productData, seProductData,seReportData }) =
     sellerName,
     verified,
     status,
-    sold
+    sold,
   } = product;
   return (
     <div>
-      <div className="rounded-md shadow-md sm:w-96 bg-gray-900 text-gray-100">
-        <div className="flex items-center justify-between p-3">
-          <div className="flex items-center space-x-2">
-            <div>
-              <img
-                src={sellerImage}
-                alt=""
-                className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700"
-              />
-            </div>
-            <div className="-space-y-1">
-              <h2 className="text-sm font-semibold leading-none">
-                {sellerName}
-              </h2>
-            </div>
-            {verified ? (
-              <div className="tooltip tooltip-right" data-tip="Veryfied">
-                <FaCheckCircle  className="text-blue-500" />
-              </div>
-            ) : (
-              <div className="tooltip tooltip-right" data-tip="Unveryfied">
-                <FaCheckCircle />
-              </div>
-            )}
-          </div>
-          <p>{date}</p>
-        </div>
+      <div className="bg-gray-100 shadow-shadow text-gray-900 rounded-lg">
         <div className="relative">
-          <img
-            src={image}
-            alt=""
-            className="object-cover object-center w-full h-72 bg-gray-500"
-          />
-          <p className="absolute top-0 right-0 bg-primary px-2">
-            {isAdvertise &&  <span>Advertised</span>}
+          <Link to='/all-products'>
+            <img
+              src={image}
+              alt=""
+              className="object-cover w-full h-[500px] bg-gray-500 rounded-t-lg"
+            />
+          </Link>
+          <p className="absolute top-2 right-2 rounded bg-primary text-white px-2">
+            {isAdvertise && <span>Advertised</span>}
           </p>
         </div>
         <div className="p-3">
@@ -86,11 +68,11 @@ const AdvertisedSlide = ({ product, productData, seProductData,seReportData }) =
               <FaFlag />
             </label>
           </div>
-          <div className="my-5">
+          {/* <div className="my-5">
             <div className="my-5">
               <h2 className="text-4xl">{name}</h2>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

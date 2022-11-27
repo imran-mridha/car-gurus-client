@@ -20,6 +20,9 @@ module.exports = {
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
       },
+      boxShadow: {
+        'shadow': '0 4px 20px rgba(0, 0, 0, 0.2)',
+      },
     },
   },
   plugins: [require("daisyui")],

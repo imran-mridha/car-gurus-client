@@ -18,7 +18,7 @@ const ConfirmationModal = ({title, message,successBtnName,closeModal,modalData,s
           <div className="modal-action">
             <label 
             onClick={()=>successAction(modalData)}
-            htmlFor="confirmation-modal" className="btn btn-primary">
+            htmlFor="confirmation-modal" className="btn bg-primary border border-primary hover:bg-secondary hover:border-secondary">
               {successBtnName}
             </label>
             <label 

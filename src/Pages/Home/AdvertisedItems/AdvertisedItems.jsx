@@ -21,7 +21,11 @@ const AdvertisedItems = () => {
     queryKey: ["advertiseItems"],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/advertiseItems`
+        `${process.env.REACT_APP_API_URL}/advertiseItems`,{
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          }
+        }
       );
       const data = await res.json();
       return data;
@@ -37,33 +41,33 @@ const AdvertisedItems = () => {
         <div className="container mx-auto my-20">
           <div className="mx-5 md:mx-0">
             <Swiper
-              slidesPerView={3}
+              slidesPerView={1}
               spaceBetween={20}
               loop={true}
               autoplay={{
-                delay: 1000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
-              breakpoints={{
-                280: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 40,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-              }}
+              // breakpoints={{
+              //   280: {
+              //     slidesPerView: 1,
+              //     spaceBetween: 20,
+              //   },
+              //   768: {
+              //     slidesPerView: 2,
+              //     spaceBetween: 40,
+              //   },
+              //   1024: {
+              //     slidesPerView: 3,
+              //     spaceBetween: 50,
+              //   },
+              // }}
               // navigation={true}
               modules={[Autoplay, Navigation]}
               className="mySwiper"
             >
               {advertiseItems.map((product) => (
-                <SwiperSlide key={product._id}>
+                <SwiperSlide className="w-full" key={product._id}>
                   <AdvertisedSlide
                     product={product}
                     seReportData={seReportData}

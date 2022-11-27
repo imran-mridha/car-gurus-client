@@ -5,6 +5,7 @@ import Loader from "../../../Shared/Loader/Loader";
 import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
 import { toast } from "react-toastify";
 import useTitle from "../../../hooks/useTitle";
+import { format, formatDistanceToNow } from "date-fns";
 
 const MyProducts = () => {
   useTitle('My-Products')
@@ -18,7 +19,11 @@ const MyProducts = () => {
     queryKey: ["products"],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/my-products/seller/${user?.email}`
+        `${process.env.REACT_APP_API_URL}/my-products/seller/${user?.email}`,{
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`
+          }
+        }
       );
       const data = await res.json();
       return data;
@@ -32,7 +37,7 @@ const makeAdvertised = (product)=>{
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
-      // authorization: `bearer ${localStorage.getItem("accessToken")}`
+      authorization: `bearer ${localStorage.getItem("accessToken")}`
     }
   })
   .then(res => res.json())
@@ -47,9 +52,9 @@ const makeAdvertised = (product)=>{
   const handleDeleteProduct = (product) => {
     fetch(`${process.env.REACT_APP_API_URL}/products/${product._id}`, {
       method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -100,7 +105,11 @@ const makeAdvertised = (product)=>{
                   <p>Orginal Price: {product.orginalPrice}</p>
                   <p>Resale Price: {product.resalePrice}</p>
                 </td>
-                <td>{product.date}</td>
+                <td>{product.date}
+                <p className="" data-tip={format(new Date(product.date), 'PPPPp')}>
+                  {formatDistanceToNow(new Date(product.date), {includeSeconds: true})}
+                </p>
+                </td>
                
                 <td>
                 {

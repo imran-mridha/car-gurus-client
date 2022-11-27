@@ -19,7 +19,11 @@ const AllSellers = () => {
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/sellers`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/sellers`,{
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`
+        }
+      });
       const data = await res.json();
       return data;
     },
@@ -32,7 +36,7 @@ const AllSellers = () => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
-        // authorization: `bearer ${localStorage.getItem("accessToken")}`
+        authorization: `bearer ${localStorage.getItem("accessToken")}`
       },
     })
       .then((res) => res.json())
@@ -47,9 +51,9 @@ const AllSellers = () => {
   const handleDeleteSeller = (seller) => {
     fetch(`${process.env.REACT_APP_API_URL}/sellers/${seller._id}`, {
       method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -110,7 +114,7 @@ const AllSellers = () => {
                     <td>
                       <button
                         onClick={() => handleVerifiedSeller(seller)}
-                        className="btn btn-sm bg-primary"
+                        className="btn btn-sm bg-primary border-primary"
                       >
                         Verify
                       </button>

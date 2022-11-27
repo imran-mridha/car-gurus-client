@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -9,8 +9,8 @@ import useTitle from "../../../hooks/useTitle";
 const { format } = require("date-fns");
 
 const AddProducts = () => {
-  useTitle('Add-Product')
-  const {user} = useContext(AuthContext)
+  useTitle("Add-Product");
+  const { user } = useContext(AuthContext);
   const date = format(new Date(), "PP");
   const {
     register,
@@ -62,14 +62,14 @@ const AddProducts = () => {
             date,
             sellerName: user?.displayName,
             sellerEmail: user?.email,
-            sellerImage: user?.photoURL
+            sellerImage: user?.photoURL,
           };
 
           fetch(`${process.env.REACT_APP_API_URL}/products`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
-              // authorization: `bearer ${localStorage.getItem("accessToken")}`,
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
             },
             body: JSON.stringify(product),
           })
@@ -145,7 +145,7 @@ const AddProducts = () => {
               className="select select-bordered w-full"
             >
               {categories.map((category) => (
-                <option key={category._id}  value={category._id}>
+                <option key={category._id} value={category._id}>
                   {category.name}
                 </option>
               ))}

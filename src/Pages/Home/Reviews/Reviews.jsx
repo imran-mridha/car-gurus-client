@@ -32,14 +32,7 @@ const Reviews = () => {
         </div>
         <div className="p-4 space-y-2 text-sm text-gray-900">
           <p>
-            Vivamus sit amet turpis leo. Praesent varius eleifend elit, eu
-            dictum lectus consequat vitae. Etiam ut dolor id justo fringilla
-            finibus.
-          </p>
-          <p>
-            Donec eget ultricies diam, eu molestie arcu. Etiam nec lacus eu
-            mauris cursus venenatis. Maecenas gravida urna vitae accumsan
-            feugiat. Vestibulum commodo, ante sit urna purus rutrum sem.
+          The Hyundai Creta is clearly an impressive compact SUV. It is spacious, comfortable, loaded with features, easy to drive and offered with powerful petrol and diesel engine options. Compared to the old car, it is a huge upgrade, both in terms of drive and feel.
           </p>
         </div>
       </div>
@@ -71,15 +64,9 @@ const Reviews = () => {
         </div>
         <div className="p-4 space-y-2 text-sm text-gray-900">
           <p>
-            Vivamus sit amet turpis leo. Praesent varius eleifend elit, eu
-            dictum lectus consequat vitae. Etiam ut dolor id justo fringilla
-            finibus.
+          It's an excellent car with good consistency in performance. I Love Creta Dual Tone Interior which gives fresh filling inside the cabin as per compare to black. Perfect Leg room gives more comfort to passengers. The mileage in city driving is excellent.
           </p>
-          <p>
-            Donec eget ultricies diam, eu molestie arcu. Etiam nec lacus eu
-            mauris cursus venenatis. Maecenas gravida urna vitae accumsan
-            feugiat. Vestibulum commodo, ante sit urna purus rutrum sem.
-          </p>
+          
         </div>
       </div>
       </div>

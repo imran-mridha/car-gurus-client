@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Category from "./Category";
 import axios from 'axios'
-import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Shared/Loader/Loader";
 import useTitle from "../../../hooks/useTitle";
 import { AuthContext } from "../../../Context/AuthProvider";
