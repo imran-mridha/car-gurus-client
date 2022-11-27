@@ -90,7 +90,7 @@ const AddProducts = () => {
     return <Loader />;
   }
   return (
-    <div className="w-[600px] mx-auto my-20 bg-white p-10 rounded-lg shadow-shadow">
+    <div className="w-11/12 md:w-9/12 mx-auto my-20 bg-white p-10 rounded-lg shadow-shadow">
       <h2 className="text-3xl mb-5">Add A Product</h2>
       <form onSubmit={handleSubmit(handleAddProduct)}>
         <div className="space-y-3">
@@ -135,7 +135,7 @@ const AddProducts = () => {
             <p className="text-red-600">{errors.phone?.message}</p>
           )}
         </div>
-        <div className="flex justify-between gap-10">
+        <div className="flex flex-col md:flex-row justify-between gap-10">
           <div className="space-y-3 w-full">
             <span className="text-lg block text-gray-600 mt-3">
               Product Category
@@ -170,7 +170,7 @@ const AddProducts = () => {
             )}
           </div>
         </div>
-        <div className="flex justify-between gap-10">
+        <div className="flex flex-col md:flex-row justify-between gap-10">
           <div className="space-y-3">
             <span className="text-lg block text-gray-600 mt-3">
               Resale Price
@@ -250,7 +250,7 @@ const AddProducts = () => {
         <input
           type="submit"
           value="Add Product"
-          className="w-full btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
+          className=" btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
         />
       </form>
     </div>

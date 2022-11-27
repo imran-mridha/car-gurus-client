@@ -7,7 +7,6 @@ import AllProducts from "../../Pages/DashBoard/AllProducts/AllProducts";
 import AllSellers from "../../Pages/DashBoard/AllSellers/AllSellers";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import Payment from "../../Pages/DashBoard/DashBoard/Payment";
-import MyBuyers from "../../Pages/DashBoard/MyBuyers/MyBuyers";
 import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/DashBoard/MyProducts/MyProducts";
 import ReportedItems from "../../Pages/DashBoard/ReportedItems/ReportedItems";

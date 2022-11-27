@@ -28,16 +28,22 @@ const MyOrders = () => {
     return <Loader />;
   }
   return (
-    <div className="mx-20 my-10">
+    <>
+    {
+      bookings?.length > 0 ? 
+      <div className="mx-5 md:mx-20 my-10">
+      <h2 className="mb-5 text-3xl font-semibold text-white">
+        My Orders: {bookings.length}
+      </h2>
       <div>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead className="text-xl">
               <tr className="text-center text-xl">
-                <th className="bg-primary text-white text-xl">Image</th>
-                <th className="bg-primary text-white text-xl">Car Name</th>
-                <th className="bg-primary text-white text-xl">Price</th>
-                <th className="bg-primary text-white text-xl">Payment</th>
+                <th className="bg-gray-100 text-gray-600 text-lg">Image</th>
+                <th className="bg-gray-100 text-gray-600 text-lg">Car Name</th>
+                <th className="bg-gray-100 text-gray-600 text-lg">Price</th>
+                <th className="bg-gray-100 text-gray-600 text-lg">Payment</th>
               </tr>
             </thead>
             <tbody>
@@ -72,6 +78,12 @@ const MyOrders = () => {
         </div>
       </div>
     </div>
+      : 
+      <div className="flex justify-center items-center text-4xl uppercase w-11/12 text-center mx-auto text-gray-600 h-[200px] md:h-[500px]">
+      <span>You haven't any Order  Yet !!!</span>
+    </div>
+    }
+    </>
   );
 };
 
