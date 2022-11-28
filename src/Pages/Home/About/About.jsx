@@ -3,9 +3,9 @@ import aboutImage from "../../../assets/about/aboutImage.png";
 
 const About = () => {
   return (
-    <div className="container mx-auto my-20 pt-10">
+    <div className="container mx-auto my-20 pt-10 overflow-hidden">
       <div className="mx-10 md:mx-0 grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div data-aos="flip-left">
+        <div data-aos="flip-left" className="overflow-hidden">
           <img src={aboutImage} alt="" />
         </div>
         <div>

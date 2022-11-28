@@ -4,7 +4,7 @@ import shape from "../../../assets/banner/texture-bg.png";
 
 const Poster = () => {
   return (
-    <div className="relative container mx-auto my-20">
+    <div className="relative container mx-auto mb-20  overflow-hidden">
       <img
         src={shape}
         className="absolute inset-0 object-cover w-full h-full rounded-lg"
@@ -13,8 +13,8 @@ const Poster = () => {
       <div className="relative bg-black bg-opacity-90 sm:rounded-lg">
         <div className="py-20 lg:py-40">
           <div className="flex flex-col md:flex-row justify-center gap-20 flex-wrap mx-5 md:mx-0">
-            <div className="flex gap-3 items-center">
-              <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
+            <div className="flex gap-3 items-center hover:-translate-x-5 duration-500">
+              <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full">
                 <FaCarAlt className="" />
               </div>
               <div className="text-white">
@@ -23,8 +23,8 @@ const Poster = () => {
               </div>
             </div>
             <div>
-              <div className="flex gap-3 items-center">
-                <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
+              <div className="flex gap-3 items-center hover:-translate-x-5 duration-500">
+                <div data-aos="zoom-in" className="text-5xl bg-primary  text-white p-4 rounded-full">
                   <FaCog />
                 </div>
                 <div className="text-white">
@@ -34,8 +34,8 @@ const Poster = () => {
               </div>
             </div>
             <div>
-              <div className="flex gap-3 items-center">
-                <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
+              <div className="flex gap-3 items-center hover:-translate-x-5 duration-500">
+                <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full">
                   <FaUserPlus />
                 </div>
                 <div className="text-white">

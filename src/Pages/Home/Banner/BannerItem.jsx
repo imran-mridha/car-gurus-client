@@ -4,7 +4,7 @@ const BannerItem = ({ bannerItem }) => {
   console.log(bannerItem);
   const { image, title, description } = bannerItem;
   return (
-    <div>
+    <div className="overflow-hidden">
       <div className="flex flex-col-reverse md:flex-row">
         <div className="md:w-11/12 lg:w-7/12 mx-10 md:mx-0">
           <p className="text-primary text-lg font-bold leading-5">
@@ -21,7 +21,7 @@ const BannerItem = ({ bannerItem }) => {
             data-aos="fade-left"
             src={image}
             alt=""
-            className="w-full "
+            className="w-full"
           />
         </div>
       </div>

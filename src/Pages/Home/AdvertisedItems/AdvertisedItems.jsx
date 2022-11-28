@@ -36,9 +36,9 @@ const AdvertisedItems = () => {
     return <Loader />;
   }
   return (
-    <div data-aos="zoom-in">
+    <div data-aos="zoom-in" className="overflow-hidden">
       {advertiseItems.length > 0 && (
-        <div className="container mx-auto my-20">
+        <div className="container mx-auto mt-20">
           <div className="mx-5 md:mx-0">
             <Swiper
               slidesPerView={1}

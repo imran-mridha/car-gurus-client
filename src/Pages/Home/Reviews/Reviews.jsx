@@ -2,9 +2,10 @@ import React from "react";
 
 const Reviews = () => {
   return (
-    <div className="container mx-auto my-20">
+    <div className="overflow-hidden">
+      <div className="container mx-auto mb-20">
       <div className="flex flex-col md:flex-row gap-10 mx-5 md:mx-0">
-      <div data-aos="fade-left" className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600">
+      <div data-aos="fade-left" className="container  flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600">
         <div className="flex justify-between p-4">
           <div className="flex space-x-4">
             <div>
@@ -36,7 +37,7 @@ const Reviews = () => {
           </p>
         </div>
       </div>
-      <div data-aos="fade-up" className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600">
+      <div data-aos="fade-up" className="container  flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600">
         <div className="flex justify-between p-4">
           <div className="flex space-x-4">
             <div>
@@ -69,7 +70,7 @@ const Reviews = () => {
           
         </div>
       </div>
-      <div data-aos="fade-right" className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600">
+      <div data-aos="fade-right" className="container  flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600">
         <div className="flex justify-between p-4">
           <div className="flex space-x-4">
             <div>
@@ -103,6 +104,7 @@ const Reviews = () => {
         </div>
       </div>
       </div>
+    </div>
     </div>
   );
 };

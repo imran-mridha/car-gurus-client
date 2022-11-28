@@ -2,7 +2,8 @@ import React from "react";
 import { FaHandPointer, FaLocationArrow, FaHeartbeat } from "react-icons/fa";
 const ChooseUs = () => {
   return (
-    <div className="my-20 container mx-auto">
+    <div className="overflow-hidden">
+      <div className="mb-20 container mx-auto">
       <div className="mx-5 md:mx-0">
         <div className="text-center">
           <p className="text-xl text-primary font-semibold pb-2">
@@ -46,6 +47,7 @@ const ChooseUs = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
