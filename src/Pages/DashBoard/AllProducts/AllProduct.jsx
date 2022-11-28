@@ -31,7 +31,7 @@ const AllProduct = ({ product, seProductData, seReportData }) => {
   const time = formatDistanceToNow(new Date(date), { includeSeconds: true });
   return (
     <div>
-      <div className="rounded-md shadow-shadow sm:w-96 p-4 text-gray-900">
+      <div className="rounded-md shadow-shadow p-4 text-gray-900">
         <div className="relative">
           <img
             src={image}
