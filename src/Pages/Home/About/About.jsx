@@ -16,9 +16,7 @@ const About = () => {
             We are Providing Best Car <br /> Best Brands
           </h2>
           <p className="w-10/12">
-            Dynamically unleash market positioning convergence for scalable
-            infrastructure Rapidly virtual infrastructures rather than
-            market-driven items. without resourceleveling process improvement.
+          World-Wide Used Vehicle Exporter of Quality Japanese Cars at a affordable prices. Japanese Quality of the Used Car Market has always been the Top of the quality and Condition in the World. Here at ICM JAPAN, we are proud to supply you the gateway to the highest quality used cars with highest quality used cars with Fast, Reliable, and Quality Service.
           </p>
           <div className="flex flex-col md:flex-row mt-5">
             <p className="text-9xl text-primary font-semibold lg:mr-3">
