@@ -98,7 +98,7 @@ const Reviews = () => {
         </div>
         <div className="p-4 space-y-2 text-sm text-gray-900">
           <p>
-          It's an excellent car with good consistency in performance. I Love Creta Dual Tone Interior which gives fresh filling inside the cabin as per compare to black. Perfect Leg room gives more comfort to passengers. The mileage in city driving is excellent.
+          I chose Car Gurus after my friend told me how these people are genuine with their details. With my amazing new like Toyota Etios, I can now say that buying a used car is not a bad idea with Autoportal!
           </p>
           
         </div>

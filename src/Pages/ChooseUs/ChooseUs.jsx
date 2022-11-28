@@ -18,9 +18,7 @@ const ChooseUs = () => {
             <FaHandPointer className="text-3xl bg-[#2ABB52] w-16 h-16 mx-auto p-4 rounded-full text-white hover:-translate-y-5 duration-500" />
             <h2 className="my-5 text-3xl font-semibold">Easy & Fast Booking</h2>
             <p>
-              Completely carinate e business testing process whereas fully
-              researched customer service. Globally extensive content with
-              quality.
+            Our smart booking engine searches for for the best price, car category, extras, exclusive offers and discounts suiting your needs. You can securely book online.
             </p>
           </div>
           <div data-aos="fade-up" className="p-10 rounded-lg mt-20 text-center shadow-shadow">
@@ -29,9 +27,7 @@ const ChooseUs = () => {
               Many Pickup Location
             </h2>
             <p>
-              Completely carinate e business testing process whereas fully
-              researched customer service. Globally extensive content with
-              quality.
+            Car Gurus live in cities and campuses around the world. You will be able to give meeting location, car gurus will reach out you timely .
             </p>
           </div>
           <div data-aos="fade-right" className="p-10 rounded-lg mt-20 text-center shadow-shadow">
@@ -40,9 +36,7 @@ const ChooseUs = () => {
               Customer Satisfaction
             </h2>
             <p>
-              Completely carinate e business testing process whereas fully
-              researched customer service. Globally extensive content with
-              quality.
+            Customer satisfaction is seen as an index to find the emotional state of a customer that defines the positive aspirations to define the joy of a customer. 
             </p>
           </div>
         </div>
