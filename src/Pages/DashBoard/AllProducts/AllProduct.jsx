@@ -19,13 +19,9 @@ const AllProduct = ({ product, seProductData, seReportData }) => {
     resalePrice,
     date,
     usagesYear,
-    description,
-    phone,
     verified,
-    sellerImage,
     sellerName,
-    status,
-    isAdvertise
+    isAdvertise,
   } = product;
 
   const time = formatDistanceToNow(new Date(date), { includeSeconds: true });
@@ -39,7 +35,7 @@ const AllProduct = ({ product, seProductData, seReportData }) => {
             className="object-cover object-center w-full h-72 bg-gray-500"
           />
           <p className="absolute top-2 right-2 rounded bg-primary px-2 text-white">
-            {isAdvertise  ? <span>Advertised</span> : <span>Available</span>}
+            {isAdvertise ? <span>Advertised</span> : <span>Available</span>}
           </p>
         </div>
         <div className="p-3">
@@ -110,7 +106,10 @@ const AllProduct = ({ product, seProductData, seReportData }) => {
                   )}
                 </div>
               </div>
-              <div className="tooltip tooltip-top" data-tip={format (new Date(date), 'PPPPp')}>
+              <div
+                className="tooltip tooltip-top"
+                data-tip={format(new Date(date), "PPPPp")}
+              >
                 <span className="">Posted: {time}</span>
               </div>
             </div>

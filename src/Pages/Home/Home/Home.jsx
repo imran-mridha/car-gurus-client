@@ -1,16 +1,16 @@
-import React from 'react';
-import useTitle from '../../../hooks/useTitle';
-import ChooseUs from '../../ChooseUs/ChooseUs';
-import About from '../About/About';
-import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
-import Banner from '../Banner/Banner';
-import Categories from '../Categories/Categories';
-import Contact from '../Contact/Contact';
-import Poster from '../Poster/Poster';
-import Reviews from '../Reviews/Reviews';
+import React from "react";
+import useTitle from "../../../hooks/useTitle";
+import ChooseUs from "../../ChooseUs/ChooseUs";
+import About from "../About/About";
+import AdvertisedItems from "../AdvertisedItems/AdvertisedItems";
+import Banner from "../Banner/Banner";
+import Categories from "../Categories/Categories";
+import Contact from "../Contact/Contact";
+import Poster from "../Poster/Poster";
+import Reviews from "../Reviews/Reviews";
 
 const Home = () => {
-  useTitle('Home')
+  useTitle("Home");
   return (
     <div>
       <Banner />
@@ -21,7 +21,6 @@ const Home = () => {
       <Poster />
       <Reviews />
       <Contact />
-      
     </div>
   );
 };

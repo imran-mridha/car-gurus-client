@@ -21,10 +21,11 @@ const AdvertisedItems = () => {
     queryKey: ["advertiseItems"],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/advertiseItems`,{
+        `${process.env.REACT_APP_API_URL}/advertiseItems`,
+        {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          }
+          },
         }
       );
       const data = await res.json();
@@ -80,10 +81,7 @@ const AdvertisedItems = () => {
       )}
       <div>
         {reportData && (
-          <ReportingModal
-            reportData={reportData}
-            seReportData={seReportData}
-          />
+          <ReportingModal reportData={reportData} seReportData={seReportData} />
         )}
       </div>
     </div>

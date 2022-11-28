@@ -244,7 +244,7 @@ const Blogs = () => {
         <p className="mt-4 leading-relaxed text-gray-700">
           In this article, I’m discussing Angular 2, and not the first version
           of the framework which is now known as AngularJS. AngularJS, the
-          original framework, is an MVC (Model-View-Controller)) framework. But
+          original framework, is an MVC (Model-View-Controller) framework. But
           in Angular 2, there’s no strict association with MV*-patterns as it is
           also component-based. Projects in Angular are structured into Modules,
           Components, and Services. Each Angular application has at least one

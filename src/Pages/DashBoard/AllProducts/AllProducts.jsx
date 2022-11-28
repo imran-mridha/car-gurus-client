@@ -7,7 +7,7 @@ import ReportingModal from "../../CategoryProducts/ReportingModal";
 import useTitle from "../../../hooks/useTitle";
 
 const AllProducts = () => {
-  useTitle('Products')
+  useTitle("Products");
   const [reportData, seReportData] = useState(null);
   const [productData, seProductData] = useState(null);
   const { data: products, isLoading } = useQuery({
@@ -15,8 +15,8 @@ const AllProducts = () => {
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
         headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`
-        }
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
       });
       const data = await res.json();
       return data;
@@ -51,9 +51,9 @@ const AllProducts = () => {
       <div>
         {reportData && (
           <ReportingModal
-          reportData={reportData}
-          seReportData={seReportData}
-          productData={productData}
+            reportData={reportData}
+            seReportData={seReportData}
+            productData={productData}
           />
         )}
       </div>

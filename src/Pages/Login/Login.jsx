@@ -8,7 +8,6 @@ import useToken from "../../hooks/useToken";
 import Lottie from "lottie-react";
 import reader from "../../assets/login/loginAnimation.json";
 
-
 const Login = () => {
   let navigate = useNavigate();
   let location = useLocation();
@@ -30,28 +29,28 @@ const Login = () => {
   const handleLogin = (data) => {
     console.log(data);
     logInUser(data.email, data.password)
-    .then((result) => {
-      const user = result.user;
-      console.log(user);
-      toast.success("Sign In Success", {autoClose: 500});
-      // navigate(from, { replace: true });
-      setLoginUserEmail(data.email)
-    })
-    .catch(error => toast.error(error.message, {autoClose: 500}))
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Sign In Success", { autoClose: 500 });
+        // navigate(from, { replace: true });
+        setLoginUserEmail(data.email);
+      })
+      .catch((error) => toast.error(error.message, { autoClose: 500 }));
   };
   const handleGoogleLogin = () => {
     providerLogin(googleProvider)
-    .then((result) => {
-      const user = result.user;
-      console.log(user);
-      toast.success("Sign In Success");
-      // navigate(from, { replace: true });
-      // setLoginUserEmail(user?.email)
-      saveUser(user?.displayName, user?.email,'buyer',user?.photoURL)
-    })
-    .catch(error => toast.error(error.message, {autoClose: 500}))
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Sign In Success");
+        // navigate(from, { replace: true });
+        // setLoginUserEmail(user?.email)
+        saveUser(user?.displayName, user?.email, "buyer", user?.photoURL);
+      })
+      .catch((error) => toast.error(error.message, { autoClose: 500 }));
   };
-  const saveUser = (name, email,role, image) => {
+  const saveUser = (name, email, role, image) => {
     const user = { name, email, role, image };
 
     fetch(`${process.env.REACT_APP_API_URL}/users`, {
@@ -71,49 +70,48 @@ const Login = () => {
     <div className="container mx-auto my-20">
       <div className="flex flex-col lg:flex-row lg:justify-between overflow-hidden mx-5 md:mx-0 gap-10 lg:gap-32">
         <div className="w-9/12 mx-auto">
-        <Lottie className="" animationData={reader} loop={true} />
+          <Lottie className="" animationData={reader} loop={true} />
         </div>
         <div className="border rounded-lg mx-5 w-11/12 lg:w-full p-5 md:p-10 shadow-shadow">
           <h2 className="text-4xl mb-10 text-center font-semibold">Login</h2>
           <form onSubmit={handleSubmit(handleLogin)}>
             <div className="flex flex-col md:flex-row gap-5 ">
-            <div className="space-y-3 w-full">
-              <span className="text-lg block">Email</span>
-              <input
-                {...register("email", {
-                  required: "Email Address is required",
-                })}
-                type="email"
-                className="w-full input input-bordered input-md text-xl block"
-              />
-              {errors.email && (
-                <p className="text-red-600">{errors.email?.message}</p>
-              )}
-            </div>
-            <div className="space-y-3 w-full">
-              <span className="text-lg block mt-3 md:mt-0">Password</span>
-              <input
-                {...register("password", {
-                  required: "Password Is Required",
-                  minLength: {
-                    value: 6,
-                    message: "Password should be 6 charecter or longer",
-                  },
-                })}
-                type="password"
-                className="w-full input input-bordered input-md text-xl block"
-              />
+              <div className="space-y-3 w-full">
+                <span className="text-lg block">Email</span>
+                <input
+                  {...register("email", {
+                    required: "Email Address is required",
+                  })}
+                  type="email"
+                  className="w-full input input-bordered input-md text-xl block"
+                />
+                {errors.email && (
+                  <p className="text-red-600">{errors.email?.message}</p>
+                )}
+              </div>
+              <div className="space-y-3 w-full">
+                <span className="text-lg block mt-3 md:mt-0">Password</span>
+                <input
+                  {...register("password", {
+                    required: "Password Is Required",
+                    minLength: {
+                      value: 6,
+                      message: "Password should be 6 charecter or longer",
+                    },
+                  })}
+                  type="password"
+                  className="w-full input input-bordered input-md text-xl block"
+                />
 
-              {/* <span className="label-text-alt flex justify-end">
+                {/* <span className="label-text-alt flex justify-end">
                 Forgot Password?
               </span> */}
-              {errors.password && (
-                <p className="text-red-600">{errors.password?.message}</p>
-              )}
+                {errors.password && (
+                  <p className="text-red-600">{errors.password?.message}</p>
+                )}
+              </div>
             </div>
-            </div>
-            
-            
+
             <input
               type="submit"
               value="Login"
@@ -136,7 +134,7 @@ const Login = () => {
             >
               Continue With Google
             </button>
-          </div> 
+          </div>
         </div>
       </div>
     </div>

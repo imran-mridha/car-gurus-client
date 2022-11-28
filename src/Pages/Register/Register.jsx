@@ -185,13 +185,12 @@ const Register = () => {
                 )}
               </div>
               <div className="space-y-3 w-full md:mt-8">
-              <input
-                type="submit"
-                value="Sign Up"
-                className="w-full btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
-              />
+                <input
+                  type="submit"
+                  value="Sign Up"
+                  className="w-full btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
+                />
               </div>
-              
             </div>
 
             <span className="text-center text-sm block">

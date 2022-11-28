@@ -12,9 +12,9 @@ const CheckoutForm = ({ booking }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const { price, email, patient,_id, productId } = booking;
+  const { price, email, patient, _id, productId } = booking;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -74,10 +74,10 @@ const CheckoutForm = ({ booking }) => {
     if (paymentIntent.status === "succeeded") {
       const payment = {
         price,
-        tanjectionId: paymentIntent.id,
+        tranjectionId: tranjectionId,
         email,
         bookingId: _id,
-        productId: productId
+        productId: productId,
       };
 
       // store payment info in the database
@@ -86,7 +86,7 @@ const CheckoutForm = ({ booking }) => {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem('accessToken')}`,
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(payment),
       })
@@ -95,9 +95,11 @@ const CheckoutForm = ({ booking }) => {
           console.log(data);
           if (data.insertedId) {
             // setSuccess("Congrats! Your Pyment Completed");
-            toast.success("Congrats! Your Pyment Completed", {autoClose: 500})
+            toast.success("Congrats! Your Pyment Completed", {
+              autoClose: 500,
+            });
             setTranjectionId(paymentIntent.id);
-            navigate('/dashboard/my-orders')
+            navigate("/dashboard/my-orders");
           }
         });
     }
@@ -108,21 +110,21 @@ const CheckoutForm = ({ booking }) => {
     <div className="">
       <form onSubmit={handleSubmit}>
         <CardElement
-        className="border border-gray-200 rounded-lg p-5"
+          className="border border-gray-200 rounded-lg p-5"
           options={{
             style: {
-                base: {
-                fontSize: '16px',
-                color: '#3A4256',
-                '::placeholder': {
-                    color: '#aab7c4',
+              base: {
+                fontSize: "16px",
+                color: "#3A4256",
+                "::placeholder": {
+                  color: "#aab7c4",
                 },
-                },
-                invalid: {
-                color: '#9e2146',
-                },
+              },
+              invalid: {
+                color: "#9e2146",
+              },
             },
-        }}
+          }}
         />
         <button
           className="btn w-full bg-primary border border-primary hover:bg-secondary hover:border-secondary mt-10"
@@ -133,12 +135,6 @@ const CheckoutForm = ({ booking }) => {
         </button>
       </form>
       <p className="text-red-500">{cardError}</p>
-      {/* {success && (
-        <div>
-          <p className="text-green-500">{success}</p>
-          <span className="font-bold">{tranjectionId}</span>
-        </div>
-      )} */}
     </div>
   );
 };

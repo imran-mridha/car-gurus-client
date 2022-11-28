@@ -16,15 +16,24 @@ const About = () => {
             We are Providing Best Car <br /> Best Brands
           </h2>
           <p className="w-10/12">
-          World-Wide Used Vehicle Exporter of Quality Japanese Cars at a affordable prices. Japanese Quality of the Used Car Market has always been the Top of the quality and Condition in the World. Here at ICM JAPAN, we are proud to supply you the gateway to the highest quality used cars with highest quality used cars with Fast, Reliable, and Quality Service.
+            World-Wide Used Vehicle Exporter of Quality Japanese Cars at a
+            affordable prices. Japanese Quality of the Used Car Market has
+            always been the Top of the quality and Condition in the World. Here
+            at ICM JAPAN, we are proud to supply you the gateway to the highest
+            quality used cars with highest quality used cars with Fast,
+            Reliable, and Quality Service.
           </p>
           <div className="flex flex-col md:flex-row mt-5">
             <p className="text-9xl text-primary font-semibold lg:mr-3">
               10<sup className="font-bold">+</sup>
             </p>
-            <p className="self-center text-2xl font-semibold w-6/12">Year's Experience in used  Car Selling With Car Gurus.</p>
+            <p className="self-center text-2xl font-semibold w-6/12">
+              Year's Experience in used Car Selling With Car Gurus.
+            </p>
           </div>
-          <button className="btn btn-md border border-secondary bg-secondary hover:bg-primary hover:border-primary mt-10">Explore More</button>
+          <button className="btn btn-md border border-secondary bg-secondary hover:bg-primary hover:border-primary mt-10">
+            Explore More
+          </button>
         </div>
       </div>
     </div>

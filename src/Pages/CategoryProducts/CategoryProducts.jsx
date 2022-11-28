@@ -1,20 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../Context/AuthProvider";
 import Loader from "../../Shared/Loader/Loader";
 import BookingModal from "./BookingModal";
 import Product from "./Product";
 import ReportingModal from "./ReportingModal";
 
 const CategoryProducts = () => {
-  const { user } = useContext(AuthContext);
   const [productData, seProductData] = useState(null);
   const [reportData, seReportData] = useState(null);
   const products = useLoaderData();
   console.log(products);
 
-  if(!products){
-    return <Loader />
+  if (!products) {
+    return <Loader />;
   }
   return (
     <div className="container mx-auto my-20">
@@ -40,9 +38,9 @@ const CategoryProducts = () => {
       <div>
         {reportData && (
           <ReportingModal
-          reportData={reportData}
-          seReportData={seReportData}
-          productData={productData}
+            reportData={reportData}
+            seReportData={seReportData}
+            productData={productData}
           />
         )}
       </div>

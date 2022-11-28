@@ -17,12 +17,7 @@ const BannerItem = ({ bannerItem }) => {
           </button>
         </div>
         <div className="self-center mx-10 md:mx-0">
-          <img
-            data-aos="fade-left"
-            src={image}
-            alt=""
-            className="w-full"
-          />
+          <img data-aos="fade-left" src={image} alt="" className="w-full" />
         </div>
       </div>
     </div>

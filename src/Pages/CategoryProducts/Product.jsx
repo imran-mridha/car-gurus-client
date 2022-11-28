@@ -20,10 +20,6 @@ const Product = ({ product, productData, seProductData, seReportData }) => {
     resalePrice,
     date,
     usagesYear,
-    description,
-    phone,
-    quality,
-    sellerImage,
     sellerName,
     verified,
     status,
@@ -112,10 +108,12 @@ const Product = ({ product, productData, seProductData, seReportData }) => {
                   )}
                 </div>
               </div>
-              <div className="tooltip tooltip-top" data-tip={format (new Date(date), 'PPPPp')}>
+              <div
+                className="tooltip tooltip-top"
+                data-tip={format(new Date(date), "PPPPp")}
+              >
                 <span className="">Posted: {time}</span>
               </div>
-              
             </div>
 
             <div>

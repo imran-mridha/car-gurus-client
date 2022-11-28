@@ -16,6 +16,6 @@ const useBuyer = (email) => {
     }
   }, [email]);
 
-  return [isBuyer,isBuyerLoading];
+  return [isBuyer, isBuyerLoading];
 };
 export default useBuyer;

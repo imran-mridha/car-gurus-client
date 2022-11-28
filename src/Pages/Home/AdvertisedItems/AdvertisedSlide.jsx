@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCheckCircle, FaFlag } from "react-icons/fa";
+import { FaFlag } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const AdvertisedSlide = ({
@@ -8,15 +8,12 @@ const AdvertisedSlide = ({
   seProductData,
   seReportData,
 }) => {
-  const {
-    image,
-    isAdvertise,
-  } = product;
+  const { image, isAdvertise } = product;
   return (
     <div className="mx-5 md:mx-0">
       <div className="bg-gray-100 shadow-shadow text-gray-900 rounded-lg">
         <div className="relative">
-          <Link to='/all-products'>
+          <Link to="/all-products">
             <img
               src={image}
               alt=""

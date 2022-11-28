@@ -1,9 +1,9 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-const useTitle = title => {
-  useEffect(()=>{
+const useTitle = (title) => {
+  useEffect(() => {
     document.title = `${title} - Car Gurus`;
-  },[title])
-}
+  }, [title]);
+};
 
 export default useTitle;

@@ -21,7 +21,7 @@ const BookingModal = ({ productData, seProductData }) => {
       buyerPhone: phone,
       buyerLocation: location,
       productId: productData._id,
-      email
+      email,
     };
 
     fetch(`${process.env.REACT_APP_API_URL}/bookings`, {
@@ -38,7 +38,7 @@ const BookingModal = ({ productData, seProductData }) => {
           seProductData(null);
           // refetch();
         } else {
-          toast.error(data.message)
+          toast.error(data.message);
         }
       });
   };
@@ -84,7 +84,7 @@ const BookingModal = ({ productData, seProductData }) => {
               placeholder="Phone Number"
               className="input input-bordered w-full"
             />
-            
+
             <input
               type="text"
               name="location"

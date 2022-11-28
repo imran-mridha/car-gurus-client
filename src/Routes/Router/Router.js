@@ -24,84 +24,132 @@ const { default: Home } = require("../../Pages/Home/Home/Home");
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
-        element: <Home />
+        path: "/",
+        element: <Home />,
       },
       {
-        path: '/blog',
-        element: <Blogs />
+        path: "/blog",
+        element: <Blogs />,
       },
       {
-        path: 'register',
-        element: <Register />
+        path: "register",
+        element: <Register />,
       },
       {
-        path: 'login',
-        element: <Login />
+        path: "login",
+        element: <Login />,
       },
       {
-        path: 'all-products',
-        element: <PrivateRoute><AllProducts /></PrivateRoute>
+        path: "all-products",
+        element: (
+          <PrivateRoute>
+            <AllProducts />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/products/:categoryId',
-        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/products/${params.categoryId}` ,{
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`
-          }
-        }),
-        element: <PrivateRoute><CategoryProducts /></PrivateRoute>
-      }
-      
-      
-    ]
+        path: "/products/:categoryId",
+        loader: ({ params }) =>
+          fetch(
+            `${process.env.REACT_APP_API_URL}/products/${params.categoryId}`,
+            {
+              headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+              },
+            }
+          ),
+        element: (
+          <PrivateRoute>
+            <CategoryProducts />
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
   {
-    path: '/dashboard',
-    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
-        path:'/dashboard', 
-        element: <PrivateRoute><DashBoard /></PrivateRoute>
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <DashBoard />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/dashboard/my-orders', 
-        element: <BuyerRoute><MyOrders /></BuyerRoute>
+        path: "/dashboard/my-orders",
+        element: (
+          <BuyerRoute>
+            <MyOrders />
+          </BuyerRoute>
+        ),
       },
       {
-        path:'/dashboard/add-products', 
-        element: <SellerRoute><AddProducts /></SellerRoute>
+        path: "/dashboard/add-products",
+        element: (
+          <SellerRoute>
+            <AddProducts />
+          </SellerRoute>
+        ),
       },
       {
-        path:'/dashboard/my-products', 
-        element: <SellerRoute><MyProducts /></SellerRoute>
+        path: "/dashboard/my-products",
+        element: (
+          <SellerRoute>
+            <MyProducts />
+          </SellerRoute>
+        ),
       },
       {
-        path:'/dashboard/all-sellers', 
-        element: <AdminRoute><AllSellers /></AdminRoute>
+        path: "/dashboard/all-sellers",
+        element: (
+          <AdminRoute>
+            <AllSellers />
+          </AdminRoute>
+        ),
       },
       {
-        path:'/dashboard/all-buyers', 
-        element: <AdminRoute><AllBuyers /></AdminRoute>
+        path: "/dashboard/all-buyers",
+        element: (
+          <AdminRoute>
+            <AllBuyers />
+          </AdminRoute>
+        ),
       },
       {
-        path:'/dashboard/reported-items', 
-        element: <AdminRoute><ReportedItems /></AdminRoute>
+        path: "/dashboard/reported-items",
+        element: (
+          <AdminRoute>
+            <ReportedItems />
+          </AdminRoute>
+        ),
       },
       {
-        path:'/dashboard/payment/:id',
-        element:<BuyerRoute > <Payment /></BuyerRoute>,
-        loader: ({params})=>fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`,{
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`
-          }
-        })
-      }
-    ]
-  }
-])
+        path: "/dashboard/payment/:id",
+        element: (
+          <BuyerRoute>
+            {" "}
+            <Payment />
+          </BuyerRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`, {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }),
+      },
+    ],
+  },
+]);

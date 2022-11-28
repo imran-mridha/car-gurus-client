@@ -96,7 +96,10 @@ const Header = () => {
         <div className="container mx-auto navbar flex justify-between px-5 md:px-0">
           <div className="">
             <div className="dropdown">
-              <label tabIndex={0} className="btn text-primary bg-white lg:hidden mr-10">
+              <label
+                tabIndex={0}
+                className="btn text-primary bg-white lg:hidden mr-10"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
