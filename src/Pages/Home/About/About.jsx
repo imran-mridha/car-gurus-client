@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className="container mx-auto my-20 pt-10">
       <div className="mx-10 md:mx-0 grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div>
+        <div data-aos="flip-left">
           <img src={aboutImage} alt="" />
         </div>
         <div>

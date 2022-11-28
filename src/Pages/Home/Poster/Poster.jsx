@@ -14,7 +14,7 @@ const Poster = () => {
         <div className="py-20 lg:py-40">
           <div className="flex flex-col md:flex-row justify-center gap-20 flex-wrap mx-5 md:mx-0">
             <div className="flex gap-3 items-center">
-              <div className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
+              <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
                 <FaCarAlt className="" />
               </div>
               <div className="text-white">
@@ -24,7 +24,7 @@ const Poster = () => {
             </div>
             <div>
               <div className="flex gap-3 items-center">
-                <div className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
+                <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
                   <FaCog />
                 </div>
                 <div className="text-white">
@@ -35,7 +35,7 @@ const Poster = () => {
             </div>
             <div>
               <div className="flex gap-3 items-center">
-                <div className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
+                <div data-aos="zoom-in" className="text-5xl bg-primary text-white p-4 rounded-full hover:-translate-x-5 duration-500">
                   <FaUserPlus />
                 </div>
                 <div className="text-white">

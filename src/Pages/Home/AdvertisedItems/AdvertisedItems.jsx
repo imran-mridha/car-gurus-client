@@ -36,7 +36,7 @@ const AdvertisedItems = () => {
     return <Loader />;
   }
   return (
-    <div>
+    <div data-aos="zoom-in">
       {advertiseItems.length > 0 && (
         <div className="container mx-auto my-20">
           <div className="mx-5 md:mx-0">

@@ -13,7 +13,7 @@ const ChooseUs = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-5 lg:mx-0">
-          <div className="p-10 rounded-lg mt-20 text-center shadow-shadow">
+          <div data-aos="fade-left" className="p-10 rounded-lg mt-20 text-center shadow-shadow">
             <FaHandPointer className="text-3xl bg-[#2ABB52] w-16 h-16 mx-auto p-4 rounded-full text-white hover:-translate-y-5 duration-500" />
             <h2 className="my-5 text-3xl font-semibold">Easy & Fast Booking</h2>
             <p>
@@ -22,7 +22,7 @@ const ChooseUs = () => {
               quality.
             </p>
           </div>
-          <div className="p-10 rounded-lg mt-20 text-center shadow-shadow">
+          <div data-aos="fade-up" className="p-10 rounded-lg mt-20 text-center shadow-shadow">
             <FaLocationArrow className="text-3xl bg-primary w-16 h-16 mx-auto p-4 rounded-full text-white hover:-translate-y-5 duration-500" />
             <h2 className="my-5 text-3xl font-semibold">
               Many Pickup Location
@@ -33,7 +33,7 @@ const ChooseUs = () => {
               quality.
             </p>
           </div>
-          <div className="p-10 rounded-lg mt-20 text-center shadow-shadow">
+          <div data-aos="fade-right" className="p-10 rounded-lg mt-20 text-center shadow-shadow">
             <FaHeartbeat className="text-3xl bg-[#0084FE] w-16 h-16 mx-auto p-4 rounded-full text-white hover:-translate-y-5 duration-500" />
             <h2 className="my-5 text-3xl font-semibold">
               Customer Satisfaction

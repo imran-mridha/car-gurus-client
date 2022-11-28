@@ -117,7 +117,7 @@ const Login = () => {
             <input
               type="submit"
               value="Login"
-              className="w-full btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
+              className=" btn bg-primary border border-primary hover:bg-secondary my-5 text-xl"
             />
             <span className="text-center text-sm block">
               New To doctors portal?{" "}
