@@ -1,126 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ReviewSlider from "./ReviewSlider";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import "./styles.css";
+
+import { Autoplay, Navigation } from "swiper";
 const Reviews = () => {
+  const [testmonials, setTestmonials] = useState([]);
+  useEffect(() => {
+    fetch('testmonail.json')
+      .then(res => res.json())
+      .then(data => setTestmonials(data))
+  }, [])
   return (
-    <div className="overflow-hidden">
-      <div className="container mx-auto mb-20">
-        <div className="flex flex-col md:flex-row gap-10 mx-5 md:mx-0">
-          <div
-            data-aos="fade-left"
-            className="container  flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600"
-          >
-            <div className="flex justify-between p-4">
-              <div className="flex space-x-4">
-                <div>
-                  <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-                    alt=""
-                    className="object-cover w-12 h-12 rounded-full bg-gray-500"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-bold">Leroy Jenkins</h4>
-                  <span className="text-xs text-gray-400">2 days ago</span>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2 text-yellow-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  <path d="M494,198.671a40.536,40.536,0,0,0-32.174-27.592L345.917,152.242,292.185,47.828a40.7,40.7,0,0,0-72.37,0L166.083,152.242,50.176,171.079a40.7,40.7,0,0,0-22.364,68.827l82.7,83.368-17.9,116.055a40.672,40.672,0,0,0,58.548,42.538L256,428.977l104.843,52.89a40.69,40.69,0,0,0,58.548-42.538l-17.9-116.055,82.7-83.368A40.538,40.538,0,0,0,494,198.671Zm-32.53,18.7L367.4,312.2l20.364,132.01a8.671,8.671,0,0,1-12.509,9.088L256,393.136,136.744,453.3a8.671,8.671,0,0,1-12.509-9.088L144.6,312.2,50.531,217.37a8.7,8.7,0,0,1,4.778-14.706L187.15,181.238,248.269,62.471a8.694,8.694,0,0,1,15.462,0L324.85,181.238l131.841,21.426A8.7,8.7,0,0,1,461.469,217.37Z"></path>
-                </svg>
-                <span className="text-xl font-bold">4.3</span>
-              </div>
-            </div>
-            <div className="p-4 space-y-2 text-sm text-gray-900">
-              <p>
-                The Hyundai Creta is clearly an impressive compact SUV. It is
-                spacious, comfortable, loaded with features, easy to drive and
-                offered with powerful petrol and diesel engine options. Compared
-                to the old car, it is a huge upgrade, both in terms of drive and
-                feel.
-              </p>
-            </div>
-          </div>
-          <div
-            data-aos="fade-up"
-            className="container  flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600"
-          >
-            <div className="flex justify-between p-4">
-              <div className="flex space-x-4">
-                <div>
-                  <img
-                    src="https://placeimg.com/80/80/people"
-                    alt=""
-                    className="object-cover w-12 h-12 rounded-full bg-gray-700"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-bold">Leroy Jenkins</h4>
-                  <span className="text-xs text-gray-400">2 days ago</span>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2 text-yellow-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  <path d="M494,198.671a40.536,40.536,0,0,0-32.174-27.592L345.917,152.242,292.185,47.828a40.7,40.7,0,0,0-72.37,0L166.083,152.242,50.176,171.079a40.7,40.7,0,0,0-22.364,68.827l82.7,83.368-17.9,116.055a40.672,40.672,0,0,0,58.548,42.538L256,428.977l104.843,52.89a40.69,40.69,0,0,0,58.548-42.538l-17.9-116.055,82.7-83.368A40.538,40.538,0,0,0,494,198.671Zm-32.53,18.7L367.4,312.2l20.364,132.01a8.671,8.671,0,0,1-12.509,9.088L256,393.136,136.744,453.3a8.671,8.671,0,0,1-12.509-9.088L144.6,312.2,50.531,217.37a8.7,8.7,0,0,1,4.778-14.706L187.15,181.238,248.269,62.471a8.694,8.694,0,0,1,15.462,0L324.85,181.238l131.841,21.426A8.7,8.7,0,0,1,461.469,217.37Z"></path>
-                </svg>
-                <span className="text-xl font-bold">4.5</span>
-              </div>
-            </div>
-            <div className="p-4 space-y-2 text-sm text-gray-900">
-              <p>
-                It's an excellent car with good consistency in performance. I
-                Love Creta Dual Tone Interior which gives fresh filling inside
-                the cabin as per compare to black. Perfect Leg room gives more
-                comfort to passengers. The mileage in city driving is excellent.
-              </p>
-            </div>
-          </div>
-          <div
-            data-aos="fade-right"
-            className="container  flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-shadow text-gray-600"
-          >
-            <div className="flex justify-between p-4">
-              <div className="flex space-x-4">
-                <div>
-                  <img
-                    src="https://source.unsplash.com/100x100/?portrait"
-                    alt=""
-                    className="object-cover w-12 h-12 rounded-full bg-gray-700"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-bold">Leroy Jenkins</h4>
-                  <span className="text-xs text-gray-400">2 days ago</span>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2 text-yellow-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  className="w-5 h-5 fill-current"
-                >
-                  <path d="M494,198.671a40.536,40.536,0,0,0-32.174-27.592L345.917,152.242,292.185,47.828a40.7,40.7,0,0,0-72.37,0L166.083,152.242,50.176,171.079a40.7,40.7,0,0,0-22.364,68.827l82.7,83.368-17.9,116.055a40.672,40.672,0,0,0,58.548,42.538L256,428.977l104.843,52.89a40.69,40.69,0,0,0,58.548-42.538l-17.9-116.055,82.7-83.368A40.538,40.538,0,0,0,494,198.671Zm-32.53,18.7L367.4,312.2l20.364,132.01a8.671,8.671,0,0,1-12.509,9.088L256,393.136,136.744,453.3a8.671,8.671,0,0,1-12.509-9.088L144.6,312.2,50.531,217.37a8.7,8.7,0,0,1,4.778-14.706L187.15,181.238,248.269,62.471a8.694,8.694,0,0,1,15.462,0L324.85,181.238l131.841,21.426A8.7,8.7,0,0,1,461.469,217.37Z"></path>
-                </svg>
-                <span className="text-xl font-bold">4.8</span>
-              </div>
-            </div>
-            <div className="p-4 space-y-2 text-sm text-gray-900">
-              <p>
-                I chose Car Gurus after my friend told me how these people are
-                genuine with their details. With my amazing new like Toyota
-                Etios, I can now say that buying a used car is not a bad idea
-                with Autoportal!
-              </p>
-            </div>
-          </div>
-        </div>
+    <div className='container mx-auto my-20'>
+      
+      <div className="text-center">
+        <p className="text-xl text-primary font-semibold pb-2">
+        Testimonials
+        </p>
+        <h2 className="text-4xl uppercase font-semibold text-secondary">
+        What Customer Says
+        </h2>
+      </div>
+      <div className='mt-10'>
+        <Swiper
+          slidesPerView={2}
+          spaceBetween={20}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          // navigation={true}
+          modules={[Autoplay, Navigation]}
+          className="mySwiper"
+        >
+          {
+            testmonials.map(reviewSlide =>
+              <SwiperSlide key={reviewSlide._id}>
+                <ReviewSlider reviewSlide={reviewSlide} />
+              </SwiperSlide>
+            )
+          }
+        </Swiper>
       </div>
     </div>
   );
