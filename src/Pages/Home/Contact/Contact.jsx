@@ -78,7 +78,7 @@ const Contact = () => {
               </label>
               <button
                 type="button"
-                className="self-center w-full px-8 py-3 text-lg rounded bg-primary text-white  hover:bg-secondary"
+                className="uppercase self-center w-full px-8 py-3 text-lg rounded bg-primary text-white  hover:bg-secondary"
               >
                 Submit
               </button>

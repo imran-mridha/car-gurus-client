@@ -4,8 +4,8 @@
 
 Hosted in Firebase -> [Car Gurus](https://car-gurus-bd.web.app/)
 
-<!-- ### adminEmail: cargurus@admin.com
-### adminPassword: 111111 -->
+### adminEmail: cargurus@admin.com
+### adminPassword: 111111
 
 ### Installation
 1. Clone the repo
