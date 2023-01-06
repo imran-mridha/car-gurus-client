@@ -28,7 +28,7 @@ const AllProducts = () => {
   }
 
   return (
-    <div className="mx-20 my-10">
+    <div className="mx-20 my-20">
       <div className="mx-5 md:mx-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {products?.map((product) => (
           <AllProduct
